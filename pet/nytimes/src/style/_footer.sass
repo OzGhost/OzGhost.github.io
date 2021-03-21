@@ -1,0 +1,23 @@
+@import constants
+
+.page-navigator
+  position: absolute
+  left: 50%
+  display: block
+  transform: translateX(-50%)
+  -webkit-transform: translateX(-50%)
+
+  button,
+  span
+    display: inline-block
+    padding: 6px 12px
+    border: 1px solid #F5F5F5
+    background: black
+    margin: 0 2px
+
+    @media (max-width: $tablet-bp)
+      padding: 12px 30px
+
+  button
+    &:hover
+      box-shadow: 0 0 8px lightgrey

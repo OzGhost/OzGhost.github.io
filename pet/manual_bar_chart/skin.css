@@ -1,0 +1,71 @@
+
+#dz {
+    height: 80vh;
+    margin-left: 56px;
+    margin-top: 56px;
+    position: relative;
+}
+
+.grid, .tray {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.grid {
+    border-left: 1px solid black;
+}
+
+.bar {
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    transition: 0.3s ease;
+}
+
+.val {
+    position: absolute;
+    top: -1em;
+    right: 0;
+}
+
+.rod {
+    height: 100%;
+    opacity: 0.4;
+}
+.rod:hover {
+    opacity: 0.8;
+}
+
+.label {
+    position: absolute;
+    bottom: -2em;
+    left: 0;
+}
+
+.rail {
+    position: relative;
+    z-index: 1;
+    border-bottom: 1px dashed #ccc;
+    box-sizing: border-box;
+}
+
+.indi {
+    position: absolute;
+    bottom: -0.5em;
+    line-height: 1;
+    left: -0.5em;
+    transform: translateX(-100%);
+}
+
+.smash {
+    position: fixed;
+    bottom: 10px;
+    right: 30px;
+    opacity: 0.5;
+    z-index: 3;
+}
+

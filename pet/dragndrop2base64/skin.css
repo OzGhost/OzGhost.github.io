@@ -1,0 +1,23 @@
+
+#pit {
+    border: 1px dashed #ff5252;
+    position: relative;
+    height: 250px;
+}
+
+#pit::after {
+    content: "Drop it all!";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#dz {
+    border: 1px dashed lightgrey;
+    min-height: 100px;
+}
+
+#picker {
+    display: none;
+}

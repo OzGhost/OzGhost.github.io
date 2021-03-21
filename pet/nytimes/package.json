@@ -1,0 +1,29 @@
+{
+  "name": "NYtimes",
+  "version": "1.0.0",
+  "description": "Simple client-side application, load & showing New York times",
+  "repository": "https://github.com/OzGhost/OzGhost.github.io.git/pet/nytimes",
+  "author": "",
+  "main": "bundle.js",
+  "scripts": {
+    "style-build": "node-sass ./src/style/style.sass ./style.css",
+    "style-watch": "node-sass ./src/style/style.sass ./style.css --watch",
+    "build": "webpack ./src/root.js ./bundle.js",
+    "watch": "webpack ./src/root.js ./bundle.js --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "flux": "^3.1.3",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.7.6",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-syntax-jsx": "^6.5.0",
+    "babel-plugin-transform-react-jsx": "^6.7.5",
+    "babel-preset-es2015": "^6.5.0",
+    "node-sass": "^4.7.2",
+    "webpack": "^1.13.0"
+  }
+}

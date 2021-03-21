@@ -1,0 +1,38 @@
+@import constants
+
+.article
+  padding: 12px
+  text-align: justify
+  margin: 16px
+  box-shadow: 0 0 6px grey
+  cursor: pointer
+  background: black
+
+  &:hover
+    box-shadow: 0 0 8px lightgrey
+
+  p
+    margin-top: 6px
+    margin-bottom: 0
+
+.article-text-only
+  .article-ctx
+    width: 100%
+
+.article-full
+  .article-ctx
+    width: calc(100% - 196px)
+    padding-left: 6px
+
+    @media (max-width: $mobile-bp)
+      width: 100%
+      padding-left: 0
+      display: block
+      float: none
+
+  img
+    @media (max-width: $mobile-bp)
+      width: 100%
+      float: none
+      display: block
+

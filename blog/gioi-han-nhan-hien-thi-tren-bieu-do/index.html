@@ -1,0 +1,96 @@
+  <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" >
+        <link href="../../favicon.png" rel="shortcut icon">
+        <link href="../style.css" rel="stylesheet">
+        <title>Giới hạn nhãn hiển thị trên biểu đồ</title>
+    </head>
+    <body>
+        <h1>Giới hạn nhãn hiển thị trên biểu đồ</h1>
+        <blockquote><small>Dành cho bác nào đang mò mẫm Jasper Report nhé ...</small></blockquote>
+        <h3>[Thứ ta đang có]:</h3>
+        <img src="before.png">
+        <h3>[Thứ ta muốn có]:</h3>
+        <img src="after.png">
+        <h2>Yêu cầu được đặt ra</h2>
+        <p>Đối với các bác làm ứng dụng thiên về quản lý thì việc kết xuất báo cáo cũng không lạ gì. Nếu dùng Java để xuất báo cáo thì cái tên Jasper Report cũng không lạ gì. Chuyện là bần tăng cũng dùng Jasper Report để xuất báo cáo như người người vẫn làm, có điều thêm cái biểu đồ vào nhìn cho nó đẹp đẹp. Hôm qua, ông trưởng nhóm chạy chức năng xuất báo cáo và nhận được một cái biểu đồ "hoành tráng". Trong hình [Thứ ta đang có], bần tăng đưa dữ liệu giả có 50 dòng thôi mà nó đã thế rồi. Cái biểu đồ của ông trưởng nhóm chắc phải tới vài trăm dòng là ít. Lúc ổng cho mình coi thì chỉ thấy một cục đen ngòm do nhãn trồng đè lên nhau.</p>
+        <p>Và thế là ổng kêu mình làm sao đó cho ra được như cái hình [Thứ ta muốn có] ấy. Đại loại là chỉ hiển thị vài nhãn cho vui thôi.</p>
+        <p>Thế là chiều hôm đó bần tăng ngồi lục lọi google mà không có giải pháp, định để mai báo cáo lại cho ông trưởng nhóm là "tịt" rồi. Sáng hôm sau chuyển sang làm cái khác luôn. Tới chiều thì hết việc làm, ngồi chơi một lúc vì không ai giao việc khác cho làm cả (buổi sáng ông trưởng nhóm vắng), chợt nhớ lại cái vụ chiều hôm qua. Thôi thì cũng đang rảnh, lại lôi cái biều đồ ra nghịch. Sau hơn hai giờ lang thang google thì đã có hướng giải quyết.</p>
+        <h2>Xác định vấn đề</h2>
+        <p>Cơ chế gán nhãn của Jasper cũng đơn giản thôi, mỗi dòng dữ liệu sẽ có một nhãn. Với khoảng 400 dòng dữ liệu thì cái thanh nằm ngang đó sẽ đeo theo khoảng 400 cái nhãn, quá nhiều để trải dài ra so với chiều ngang eo hẹp của một tờ A4. Kết quả là đống nhãn đó xếp chồng lên nhau và chở nên không thể nào đọc được nữa. Cái đống đen ngòm đó vừa khiến biểu đồ trở nên xấu xí vừa chả giúp ích gì cho người xem báo cáo.</p>
+        <p>Gặp phải vấn đề trên thì ... hờ hờ, chắc các bác cũng sẽ như bần tăng. Ý tưởng đầu tiên đó là giám số lượng nhãn xuống và ...</p>
+        <h2>Giải pháp</h2>
+        <p>Thật không may là ý tưởng trên sẽ không thực hiện được, trừ khi các bác lập trình lại phần tùy chỉnh nhãn trong Jasper Library. Danh sách nhãn được Jasper lưu trữ dạng danh sách các chuỗi List<String> nhưng cái danh sách này không thể bị thay đổi. Bần tăng đã thử và nhận được lỗi vi phạm ngoại lệ.</p>
+        <p>Sau khi đọc được một bài viết trên mạng cũng giải quyết vẫn đề tương tự, bần tăng đã làm theo và đưa ra giải pháp cho vấn đề</p>
+        <p>Trong bài viết đó, tác giả dùng một biến để làm mốc, những nhãn có chỉ số chia hết cho biến này sẽ được hiển thị. Rồi dùng màu trắng (Trùng với màu nền) cho những nhãn không mong muốn và để màu đen cho các nhãn muốn hiển thị.</p>
+        <p>Bần tăng cũng làm tương tự và thu được kết quả mấy hài lòng. Các nhãn không mong muốn có chữ màu trắng và bóng đổ màu đen nên trong không được đẹp (nhìn nó nhem nhem xấu lắm). Thêm một điểm nữa là cái biến tác giả dùng là biến cố định, khi số lượng dòng dữ liệu nhỏ hơn giá trị được gán cho biến đó thì biểu đồ chỉ hiển thị vài nhãn rất thưa thớt. Còn khi số dòng dữ liệu lớn gấp nhiều lần giá trị của biến đó thì kết quả không khá hơn ban đầu là mấy.</p>
+        <p>Sau đây là giải pháp của bần tăng cho hai vấn đề còn lại trong giải pháp trên. Về việc bóng đổ gây nhem nhem cho cái nhãn, bần tăng dùng màu trong suốt thay cho màu trắng. Kết quả thu được là những nhãn không mong muốn nhìn như kiểu biến mất luôn (sạch đẹp luôn). Vấn đề giá trị của biến làm mốc, bần tăng tính toán dựa trên số lượng nhãn trong biểu đồ thay vì gán giá trị cố định. Kết quả là trên biều đồ luôn luôn có một số lượng nhãn vừa phải, đủ nhìn. Các bác cũng có thể xem kết qua trong hình [Thứ ta muốn có] ở đầu bài.</p>
+        <h2>Chi tiết thực hiện</h2>
+        <p>Lý thuyết nhiêu đó đủ rồi (thừa luôn rồi ấy nhỉ). Bắt tay vào làm thôi.</p>
+        <p>Bối cảnh là như này: Khung báo cáo (Report Template) được thiết kế bằng phần mềm iReport hoặc JasperSoft Studio (cả hai đều là sản phẩm miễn phí do Jasper phát hành). Trong bài bần tăng dùng iReport nhé (JasperSoft Studio chạy lag lắm). Sau đó, trong ứng dụng, lúc thực thi chức năng kết xuất báo, khung báo cáo sẽ được biên dịch và dữ liệu được đổ vào khung, cuối cùng là xuất thành tập tin.</p>
+        <p>Việc chỉnh màu cho từng nhãn không thể thực hiện trong iReport hay JasperSoft Studio nhé. Việc cần làm là tạo ra lớp tùy chỉnh biểu đồ đặc trưng cho mục đích đó.</p>
+        <p>Các bác tạo một lớp có nội dung như sau nhé:</p>
+        <code>
+          <pre>
+
+package common;
+
+import java.awt.Color;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.CategoryAxis;
+import org.jfree.chart.plot.CategoryPlot;
+import net.sf.jasperreports.engine.JRChart;
+import net.sf.jasperreports.engine.JRChartCustomizer;
+
+public class MyChartCustomizer implements JRChartCustomizer {
+
+    @Override
+    public void customize(JFreeChart jfChart, JRChart jrChart) {
+        final CategoryPlot plot = jfChart.getCategoryPlot();
+
+        // x axis in chart have another name is domain axis
+        final CategoryAxis categoryAxis = plot.getDomainAxis();
+
+        // get number of labels will appearance in report
+        final int labels = plot.getCategories().size();
+
+        // create transparent color -> make label look like disappearance
+        final Color noColor = new Color(1f, 1f, 1f, 0f);
+
+        final int maximumLabels = 6;
+        final int ticketDisplayRatio
+            = labels <= maximumLabels
+                ? 1
+                : labels <= 2 * maximumLabels
+                    ? 2
+                    : labels / maximumLabels
+        ;
+        for (int i = labels - 1; i > -1; i--) {
+            // make unexpected label transparent
+            if ((i % ticketDisplayRatio) != 0) {
+                String categoryLabel = (String) plot.getCategories().get(i);
+                categoryAxis.setTickLabelPaint(categoryLabel, noColor);
+            } // => end IF
+        } // => end FOR
+    } // => end METHOD
+} // => end CLASS
+          </pre>
+        </code>
+        <p>Các bác có thể tùy chỉnh giá trị cho biến maximumLabels tùy thuộc vào nhu cầu sử dụng. Với số lượng nhãn tối đa có thể xuất hiện trên biều đồ sẽ bằng giá trị biến maximumLabels cộng thêm một. Bần tăng để giá trị là 6 thì tối đa sẽ có 7 cái nhãn được hiển thị (như hình ở đầu bài).</p>
+        <p>Sau đó, thêm giá trị cho thuộc tính Customizer Class. Trong iReport, các bác chọn biểu đồ cần chỉnh rồi ngó qua cửa sổ thuộc tính (properties view), kéo kéo xuống sẽ thấy. Các bác điền tên cái lớp vừa tạo ở trên vào (bao gồm cả tên gói nhé) và lưu lại.</p>
+        <img src="cfg.png ">
+        <p>Còn bác nào lười thì mở cái khung báo cáo (tập tin dạng *.jrxml) bằng trình soạn thảo văn bản nào đó và sửa trực tiếp luôn. Các bác  thêm thuộc tính <i>customizerClass</i> cho thẻ <i>chart</i> như phía dưới:</p>
+        <code>
+          <pre>
+
+&lt;chart evaluationTime="Report"
+    customizerClass="common.MyChartCustomizer"
+    renderType="draw"&gt;
+	...
+&lt;/chart&gt;
+          </pre>
+        </code>
+        <p>Thế là xong, giờ thì các bác thử xuất báo cáo xem kết quả như nào?</p>
+    </body>
+</html>

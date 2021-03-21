@@ -1,0 +1,24 @@
+
+body {
+  position: relative;
+}
+
+img {
+  width: 300px;
+}
+
+#home {
+  padding-top: 50px;
+  min-height: 800px;
+  background: red;
+}
+
+#porfolio {
+  min-height: 800px;
+  background: blue;
+}
+
+#contact {
+  min-height: 800px;
+  background: green;
+}

@@ -1,0 +1,134 @@
+import java.net.*;
+import java.io.*;
+import java.util.*;
+import java.util.regex.*;
+
+public class WordMean {
+    private static String[] words;
+
+    private static final String NOR_PREFIX  = "";
+    private static final String OBJ_PREFIX  = "    ";
+    private static final String CTX_PREFIX  = "        ";
+    private static final String ARR_PREFIX  = "            ";
+
+    private static final String MEAN_URL
+        = "https://vdict.com/%s,1,0,0.html";
+    private static final String AUDIO_URL
+        = "https://www.vocabulary.com/dictionary/%s";
+    private static final String SPELL_PATTERN
+        = "<div class=\"pronounce\">\\/.+\\/<\\/div>";
+    private static final String MEAN_PATTERN
+        = "<ul class=\"list1\"><li><b>[^<>]+<\\/b>";
+    private static final String AUDIO_PATTERN
+        = "data-audio=\"[^<>=]+\"";
+
+    private static String loadPage (String uri) throws Exception {
+        final URL link = new URL(uri);
+        final URLConnection con = link.openConnection();
+        final BufferedReader in = new BufferedReader(
+            new InputStreamReader(
+                con.getInputStream()
+            )
+        );
+        String inputLine = in.readLine();
+        final StringBuilder sb = new StringBuilder();
+        while (inputLine != null) {
+            sb.append(inputLine);
+            inputLine = in.readLine();
+        }
+        return sb.toString();
+    }
+
+    private static String[] loadRelatePage (String word) throws Exception {
+        String[] rs = new String[2];
+        rs[0] = loadPage( String.format(MEAN_URL, word) );
+        rs[1] = loadPage( String.format(AUDIO_URL, word) );
+        return rs;
+    }
+
+    private static String[] getRelateThing (String[] pageContent, String word) {
+        final List<String> rs = new LinkedList<>();
+        rs.add(word);
+
+        final Matcher spellMatcher = Pattern.compile(SPELL_PATTERN)
+            .matcher(pageContent[0]);
+        final Matcher meanMatcher = Pattern.compile(MEAN_PATTERN)
+            .matcher(pageContent[0]);
+        final Matcher audioMatcher = Pattern.compile(AUDIO_PATTERN)
+            .matcher(pageContent[1]);
+
+        // spell load
+        if (spellMatcher.find()) {
+            final String g = spellMatcher.group();
+            final int len = g.length();
+            rs.add(
+                g.substring(23, len - 6)
+            );
+        } else {
+            rs.add("?");
+        }
+
+        if (audioMatcher.find()) {
+            final String g = audioMatcher.group();
+            final int len = g.length();
+            rs.add(
+                g.substring(12, len - 1)
+            );
+        } else {
+            rs.add("?");
+        }
+        
+        while (meanMatcher.find()) {
+            final String g = meanMatcher.group();
+            final int len = g.length();
+            rs.add(g.substring(25, len - 4));
+        }
+        return rs.toArray(new String[rs.size()]);
+    }
+
+    private static String toJSON (String[] spellNMean) {
+        final StringBuilder rs = new StringBuilder();
+        rs.append(OBJ_PREFIX + "{\n");
+        rs.append(CTX_PREFIX + "word: \"" + spellNMean[0] + "\",\n");
+        rs.append(CTX_PREFIX + "spell: \"" + spellNMean[1] + "\",\n");
+        rs.append(CTX_PREFIX + "audioCode: \"" + spellNMean[2] + "\",\n");
+        rs.append(CTX_PREFIX + "means: [\n");
+        String colon = "";
+        for (int i = 3; i < spellNMean.length; i++) {
+            rs.append(colon);
+            rs.append(ARR_PREFIX + "\"" + spellNMean[i] + "\"");
+            colon = ",\n";
+        }
+        rs.append("\n" + CTX_PREFIX + "]\n");
+        rs.append(OBJ_PREFIX + "}");
+        return rs.toString();
+    }
+    
+    public static void main (String[] args) throws Exception {
+        PrintWriter pw = null;
+        String colon = "";
+        try {
+            pw = new PrintWriter("/tmp/words.json", "UTF-8");
+            pw.write("var words = [\n");
+            for (String word: words) {
+                String[] pages = loadRelatePage(word);
+                String[] rs = getRelateThing(pages, word);
+                pw.write(colon);
+                pw.write( toJSON(rs) );
+                colon = ",\n";
+            }
+            pw.write("\n]");
+            pw.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try { pw.close(); } catch (Exception e) {}
+        }
+    }
+
+    static {
+        words = new String[] {"cover", "rain"};
+    }
+}
+
+

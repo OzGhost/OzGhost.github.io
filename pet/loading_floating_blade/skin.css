@@ -1,0 +1,50 @@
+
+.floating_blade {
+    position: fixed;
+    z-index: 300;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.floating_blade:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 46px;
+    height: 46px;
+    border: 27px solid transparent;
+    border-right-color: rgba(240, 58, 71, 0.3);
+    border-radius: 50%;
+    background: transparent;
+    top: calc(50% - 50px);
+    left: calc(50% - 50px);
+    z-index: 305;
+    animation: rolling 0.7s linear infinite;
+}
+
+.floating_blade:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border: 35px solid transparent;
+    border-left-color: rgba(39, 111, 191, 0.3);
+    border-radius: 50%;
+    background: transparent;
+    top: calc(50% - 70px);
+    left: calc(50% - 70px);
+    z-index: 310;
+    animation: rolling 1.3s linear infinite reverse;
+}
+
+@keyframes rolling {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

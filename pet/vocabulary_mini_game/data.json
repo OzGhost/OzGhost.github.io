@@ -1,0 +1,52 @@
+words = [
+    {
+        "word": "adversary",
+        "mean": "kẻ địch, kẻ thù; đối phương, đối thủ",
+        "spell": "/'ædvəsəri/"
+    },
+    {
+        "word": "bluff",
+        "mean": "dốc đứng; lời lừa gạt; lời bịp bợm; bịp, lừa gạt, lừa phỉnh",
+        "spell": "/blʌf/"
+    },
+    {
+        "word": "circumference",
+        "mean": "đường tròn, chu vi",
+        "spell": "/sə'kʌmfərəns/"
+    },
+    {
+        "word": "counter",
+        "mean": "quầy hàng, quầy thu tiền; người đếm; bàn tính, máy tính; miếng đệm lót giày; đối lập, chống lại, trái lại, ngược lại;",
+        "spell": "/'kauntə/"
+    },
+    {
+        "word": "disdain",
+        "mean": "thái độ khinh người, thái độ khinh khỉnh; thái độ không thèm, thái độ làm cao không thèm (làm gì...)",
+        "spell": "/dis'dein/"
+    },
+    {
+        "word": "emerge",
+        "mean": "nổi lên, hiện ra, lòi ra; thoát khỏi (sự đau khổ)",
+        "spell": "/i'mə:dʤ/"
+    },
+    {
+        "word": "furtive",
+        "mean": "trộm, lén lút; bí mật, ngấm ngầm",
+        "spell": "/'fə:tiv/"
+    },
+    {
+        "word": "gusto",
+        "mean": "sự thưởng thức, sự hưởng; sự khoái trá, sự thích thú",
+        "spell": "/'gʌstou/"
+    },
+    {
+          "word": "imperious",
+        "mean": "hống hách; độc đoán; khẩn cấp, cấp nhiệt, cấp bách",
+        "spell": "/im'piəriəs/"
+    },
+    {
+        "word": "pertinent",
+        "mean": "thích hợp, thích đáng, đúng chỗ; đi thẳng vào (vấn đề...); vật phụ thuộc",
+        "spell": "/'pɔ:tinənt/"
+    },
+];

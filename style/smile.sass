@@ -1,0 +1,40 @@
+$bg: #080808
+$fg: #e2e2e2
+$baseWidth: 50px
+$halfWidth: $baseWidth / 2
+$quaterWidth: $baseWidth / 5
+$weight: 2px
+
+body
+    background-color: $bg
+
+#central
+    width: $halfWidth
+    height: $halfWidth
+    border-radius: 50%
+    position: absolute
+    top: 25%
+    left: 25%
+    background-color: $fg
+
+#frame
+    width: $baseWidth
+    height: $baseWidth
+    margin: calc(50vh - #{$halfWidth}) auto 0
+    position: relative
+
+#smile
+    border-left: $weight solid transparent
+    border-right: $weight solid transparent
+    border-bottom: $weight solid $fg
+    box-sizing: border-box
+    height: 100%
+    width: 100%
+    border-radius: 50%
+    animation: spin .7s infinite alternate ease-in-out
+
+@keyframes spin
+    from
+        transform: rotate(0deg)
+    to
+        transform: rotate(360deg)

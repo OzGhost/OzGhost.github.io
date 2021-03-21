@@ -1,0 +1,125 @@
+  <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" >
+        <link href="../../favicon.png" rel="shortcut icon">
+        <link href="../style.css" rel="stylesheet">
+        <title>[SQL] Optimization</title>
+    </head>
+    <body>
+        <h1>[SQL] Optimization</h1>
+        <blockquote>
+            <small>
+                Feeling slow with your SQL query?
+            </small>
+        </blockquote>
+        <h2>Why?</h2>
+        <p>
+            You wrote an SQL query. Then executed it.
+            Then waited for it ... and saw the result. That was <b>OK</b>.<br>
+            But, maybe user who uses your product
+            will not seem that's <i>'OK'</i>.<br>
+            In that case, of course, you need to speed it up,
+            or your boss will ask you to do that.
+        </p>
+        <h2>Is it really necessary?</h2>
+        <p>
+            Almost all projects that I made at university and even
+            projects which I was joined in my company.
+            There is almost every SQL query which looked like very simple,
+            was used.<br>
+            About 50 percents of them do the job like <i>Create</i>
+            or <i>Modify</i> or <i>Delete</i> some record. This kind of query
+            will not take a long time to wait for.<br>
+            The rest was used for retrieving data. In the regular case,
+            these queries sometimes look like a little bit slower than another
+            but still acceptable.<br>
+            So, what is optimizing for?
+        </p>
+        <h2>How about my case?</h2>
+        <p>
+            A normal day in the past, I came to my office like another day
+            and my team leader said to me:
+            <i>"Hey guy, I wonder why this function was too slow.
+            Can you improve it?"</i><br>
+            Thirty minutes later, I found the reason. That function retrieved data
+            from a table with about thirty million records inside.<br>
+            Have you felt like a huge table yet? @@
+        </p>
+        <h2>That's why ...</h2>
+        <p>
+            In some case, maybe rare cases, you work with a <i>'huge table'</i>
+            but you didn't notice about the out-of-size of this table.
+            Then you create queries like you did. They work properly but
+            few of them seem slow or even very slow.
+        </p>
+        <p>
+            In my case, someone else wrote the function a year ago. At that time,
+            maybe that table not big enough to drag the whole function slows down.
+            But now, it was. Unfortunately, that guy had left the team a long time ago
+            and now I am maintaining his function.
+        </p>
+        <h2>Problem ...</h2>
+        <p>
+            With few simple query, I found that the table has more than thirty
+            million records. And the target query with where clause covers about six
+            million records. Beside it, the query requires a function max to retrieve
+            the newest records which were inserted into the table.
+        </p>
+        <p>
+            I mention the function max here because it causes a problem. When you
+            use any 'group by' function like <i>Count</i> or <i>Sum</i> or
+            <i>Average</i> ... on a non-index column, it requests database management
+            system (DBMS) scan through all records satisfy where clause to calculate
+            the final result.
+        </p>
+        <p>
+            One more problem here is function max was used on time stamp column.
+            That's mean, compare operation has to work on date data type and
+            if you were tried it before, you will know it takes a bunch of time,
+            much more than comparing numeric data type.
+        </p>
+        <h2>Solution ???</h2>
+        <p>
+             You can do nothing to reduce table size. Data was saved down for some
+             reason, is not the thing you can freely remove without permission
+             (except testing data). The thing you can do is face the size no matter
+             how big it is.
+        </p>
+        <p>
+            Fortunately, the data of this table have a special property
+            can be tricked. That property is a relation between time stamp column was
+            used to compare and identified column which increases automatic.
+            That's mean, function max use on time stamp column or identified
+            column give the same result. In addition, in my case, identified colum
+            is a numeric column.
+            <br>
+            With this trick, I solve the data type problem. How about the last one?
+        </p>
+        <p>
+            If you know well about the index in a relational database system. You will see
+            the last problem about scan through a large number of records was solve
+            with about trick. I read it somewhere on the internet that when cause
+            function min on an indexed column, DBMS just need to return record matches
+            the first index. So, I think if we use function max instead of min
+            function, DBMS do the same thing with the last index.
+        </p>
+        <p>
+            Think about DBMS's index like an array index.
+            If you have an index, you can immediately access your array item data
+            with this index. So, when an index was specified, DBMS can immediately
+            return the record denote by this index. Finding first or the last index
+            is not too difficult to.
+        </p>
+        <p>
+            With above trick, the function much faster than before. Now it takes
+            total six hundred millisecond instead of twenty seconds with the old query.
+        </p>
+        <p>
+            Few date later, my department leader ask me to support another team
+            run in the same trouble like this. I do the same trick and receive
+            the same result.<br>
+            If you're in my case, let try it. This trick really cool at all.
+        </p>
+    </body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <meta charset="utf8" />
+        <title>Speed up? Why not :P</title>
+        <link href="style.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <h1>Multi-thread</h1>
+        <h3>
+            What in the world is it?
+        </h3>
+        <p>Sorry but JavaScript have nothing to do with multi-thread</p>
+        <p>
+        Think about it like you have dish to prepare. But instead of prepare it yourself, you have someone lend you a hand.
+        The dish will be complete in a shorter period of time when you do it alone
+        </p>
+        <img style="width: 500px" src="parallel-cooking-v01.png" />
+        <p>
+        In short, you do several stuff simultaneously by running those stuff in several thread instead of run it one by one sequentially 
+        </p>
+        <h3>
+            How can it help?
+        </h3>
+        <p>
+        It's almost obvious that multi-thread make things faster
+        </p>
+        <p>
+        For example you have a unit of work that include two separate task says, A and B:
+            <ul>
+                <li>Required time <b>sequentially</b> run = time(A) + time(B)</li>
+                <li>Required time <b>simultaneously</b> run = max( time(A), time(B) )</li>
+            </ul>
+        </p>
+        <p>
+        So the best we can get out of it is to reduce the required time by a half (when A and B take the same amount of time to run)
+        </p>
+        <h3>
+            But. Nothing come for free
+        </h3>
+        <p>
+        There are several issue you need to solve before jumping in and turn a block of normal code to multi-thread code
+        </p>
+        <ol>
+            <li>
+                <b>Shared resource manipulate</b>. Usually there will be stuffs that was shared between theads like cache, configuration, v.v...
+                and manage those resources require extra care like:
+                <table>
+                    <tr>
+                        <td colspan="3" style="text-align: center; font-weight: bold">Code in both thread</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <pre>
+                                while( ! stack.isEmpty() ){
+                                                String url = stack.pop();
+                                                ...
+                                }</pre>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold">Execution in thread A</td>
+                        <td style="font-weight: bold">Debug</td>
+                        <td style="font-weight: bold">Execution in thread B</td>
+                    </tr>
+                    <tr>
+                        <td>!stack.isEmpty() -&gt; true</td>
+                        <td> stack.size = 1 </td>
+                        <td>...</td>
+                    </tr>
+                    <tr>
+                        <td>...</td>
+                        <td> stack.size = 1 </td>
+                        <td>!stack.isEmpty() -&gt; true</td>
+                    </tr>
+                    <tr>
+                        <td>stack.pop()</td>
+                        <td>stack.size = 1</td>
+                        <td>...</td>
+                    </tr>
+                    <tr>
+                        <td>...</td>
+                        <td>stack.size = 0</td>
+                        <td>stack.pop()</td>
+                    </tr>
+                    <tr>
+                        <td>...</td>
+                        <td>stack.size = 0</td>
+                        <td style="color: red">EmptyStackException...</td>
+                    </tr>
+                </table>
+                <ul>
+                    <li>
+                        <b>Locking</b>: using <i>synchronizes</i> keyword to perform locking. It cost time to acquite a lock.
+                        Sometime the lock be hold for a long period (like loop through a huge list) then it block others thread that need access to that list.
+                        Beside, you need to decide the lock level for each lock (class based or instance based).
+                        And be careful cause there is a chance for deadlock every time you using locking.
+                        <b>Tip:</b> turn check-then-act series to atomic operation by locking
+                        <table>
+                            <tr>
+                                <td colspan="3" style="text-align: center; font-weight: bold">Code in both thread</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <pre>
+                                        while( ! stack.isEmpty() ){
+                                                        String url = null;
+                                                        synchronized(...) {
+                                                                        if ( stack.isEmpty() ) {
+                                                                                        break;
+                                                                        }
+                                                                        url = stack.pop();
+                                                        }
+                                                        ...
+                                        }</pre>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold">Execution in thread A</td>
+                                <td style="font-weight: bold">Debug</td>
+                                <td style="font-weight: bold">Execution in thread B</td>
+                            </tr>
+                            <tr>
+                                <td>!stack.isEmpty() -&gt; true</td>
+                                <td>stack.size = 1; lock free</td>
+                                <td>...</td>
+                            </tr>
+                            <tr>
+                                <td>...</td>
+                                <td>stack.size = 1; lock free</td>
+                                <td>!stack.isEmpty() -&gt; true</td>
+                            </tr>
+                            <tr>
+                                <td><i>gain lock -&gt; success</i></td>
+                                <td>stack.size = 1; lock free</td>
+                                <td>...</td>
+                            </tr>
+                            <tr>
+                                <td>...</td>
+                                <td>stack.size = 1; lock -&gt; A</td>
+                                <td><i>gain lock -&gt; failed</i></td>
+                            </tr>
+                            <tr>
+                                <td>stack.isEmpty() -&gt; false</td>
+                                <td>stack.size = 1; lock -&gt; A</td>
+                                <td>...</td>
+                            </tr>
+                            <tr>
+                                <td>...</td>
+                                <td>stack.size = 1; lock -&gt; A</td>
+                                <td>waiting on the lock</td>
+                            </tr>
+                            <tr>
+                                <td>stack.pop()</td>
+                                <td>stack.size = 1; lock -&gt; A</td>
+                                <td>...</td>
+                            </tr>
+                            <tr>
+                                <td>...</td>
+                                <td>stack.size = 0; lock -&gt; A</td>
+                                <td>waiting on the lock</td>
+                            </tr>
+                            <tr>
+                                <td><i>release lock</i></td>
+                                <td>stack.size = 0; lock -&gt; A</td>
+                                <td>...</td>
+                            </tr>
+                            <tr>
+                                <td>...</td>
+                                <td>stack.size = 0; lock free</td>
+                                <td><i>gain lock -&gt; success</i></td>
+                            </tr>
+                            <tr>
+                                <td>...</td>
+                                <td>stack.size = 0; lock -&gt; B</td>
+                                <td>stack.isEmpty() -&gt; true</td>
+                            </tr>
+                            <tr>
+                                <td>...</td>
+                                <td>stack.size = 0; lock -&gt; B</td>
+                                <td>break</td>
+                            </tr>
+                            <tr>
+                                <td>...</td>
+                                <td>stack.size = 0; lock -&gt; B</td>
+                                <td><i>release lock</i></td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <b>Immutable</b>: if you have a resource that cannot be changed so that resource don't need any lock.
+                        Cause concurrent access problems (dirty read, lost update, phantom read, ...) do not occur on read-only resource.
+                        So, consider to build immutable shared resource over locking if possible
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <b>Cancellation/Interuption support</b>.
+                Cancellation or Interuption react may become useful that save system resource. For exam, after hit a button to perform a complex calculation,
+                User decide to stop it by hit cancel so the application need a mechanism to stop the calculate thead. Otherwise, the calculate thread will
+                run wild until the calculation complete or exception occur
+            </li>
+            <li>
+                <b>Exception handling</b>.
+                If exception was throw in a thread (not main thread). It will not affect main thread at all. The application still running and that exception
+                may silently fade away without anyone noticed. So in multi-thread environment, exception need extra care too.
+            </li>
+            <li>
+                <b>Work splitting</b>.
+                <ul>
+                    <li>
+                        <b>by nature of work</b>: heavy calculate work, network waiting work, i/o waiting work, v.v....
+                    </li>
+                    <li>
+                        <b>by part of collection</b>: says, you have a list of 10 number need to be process, then having 2 thread with 5 number per thread may help
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <b>How many thread is reasonable?</b>. There are quite a lot of factor affect the number of thread that give the best result like:
+                #cpu-core, free amount of RAM, nature of task that run together, ... So you need to adjust-then-test to find out the suitable number of thread
+                that meet your need
+            </li>
+            <li>
+                <b>Thread creation and manipulation have it own price</b>.
+                The cost to creat and manage threads maybe far greater than the cost to make your work done. So take time to decide that to create thread
+                time by time or maintain an amount of thread then feed them with work. In case, you make a thread living around so another problem is
+                when to stop that thread and if they stopped unexpectly which stratergy to renew them?
+            </li>
+        </ol>
+        <h3>
+            Step by step
+        </h3>
+        <p>If you already prepare yourself to face the above problems then it's time to create your own piece of multi-thread code</p>
+        <p>It quite easy that just solve the above problems, one by one. Others stuff have library supported :P</p>
+        <ol>
+            <li>
+                Split the work:
+                <img src="work_splitting.png" style="width: 300px"/><br/>
+                Try to split a single unit of work to multiple independence tasks. That mean each task can be perform separately from others
+                as soon as the input for it become ready. Split work by nature is a good place to start...
+            </li>
+            <li>
+                Decide which to share: Producer-Consumer like system need a common queue to put/take. Observer like system need a common flag to watch on v.v...
+                So point out which resource that must be shared among the thread and strategy to manipulate them
+            </li>
+            <li>
+                Design exception handling mechanism: Definitely you don't want any exception silently leak out of the system so spend time for this topic
+            </li>
+            <li>
+                Design cancellation/interruption mechanism: very nice to have
+            </li>
+            <li>
+                Design the thread creation/maintenance mechanism: You can build your own thread pool or rely on library/language support
+                or whatever meet your need. And you may need to answer the question about 'How many thread is enough?` when build or use a pool
+            </li>
+        </ol>
+        <hr/>
+
+        <h1>Caching</h1>
+        <h3>What is it?</h3>
+        <p>The action that storing data to speed up the later access. The data might be result of earlier computation or other low speed accesss data storage</p>
+        <h3>How can it help?</h3>
+        <p>Retrieve the result from cache will be faster than re-compute the result.
+        In case, the cache store in higher speed access storage then the access time will be reduce</p>
+        <h3>Should know starter pack</h3>
+        <ol>
+            <li>When to clear/rewrite the cached results?</li>
+        </ol>
+        <h3>Caching framework</h3>
+        <ol>
+            <li><a href="https://www.ehcache.org/">EHCache</a></li>
+            <li><a href="http://memcached.org/">MemCached</a></li>
+            <li><a href="https://commons.apache.org/proper/commons-jcs/">Java Caching System</a></li>
+            <li><a href="https://redis.io/">redis</a></li>
+        </ol>
+        <h3>Step by step apply</h3>
+        <ol>
+            <li>
+                Choose the cache key: The key ussually the factor that determine the output of computation
+                (the output will stay the same if those factor have not change)
+            </li>
+            <li>
+                Define cache life cycle: when to store/clear/rewrite cache?
+            </li>
+        </ol>
+        <hr/>
+
+        <h1>gRPC</h1>
+        <h3>What is it?</h3>
+        <p>Remote Procedure Call (RPC) is a protocol that one program can use to request a service from a program
+        located in another computer on network without having to understand the network's details.</>
+        <p>gRPC is a RPC framework</p>
+        <h3>How can it help?</h3>
+        <p>The payload size for each call will be smaller -&gt; reduce the time that tranfer payload over network</p>
+        <h3>Should know starter pack</h3>
+        ...
+        <h3>Step by step apply</h3>
+        ...
+    </body>
+</html>

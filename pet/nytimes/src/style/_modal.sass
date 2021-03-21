@@ -1,0 +1,64 @@
+@import constants
+
+.modal
+  .modal-ground
+    position: fixed
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    background: black
+    opacity: 0.8
+    z-index: 2
+
+  .modal-ctx
+    position: fixed
+    z-index: 3
+    top: 30px
+    left: 50%
+    width: 768px
+    background: black
+    padding: 6px 12px
+    box-shadow: 0 0 8px lightgrey
+    box-sizing: border-box
+    max-height: calc(100vh - 72px)
+    overflow: auto
+    transform: translateX(-50%)
+    -webkit-transform: translateX(-50%)
+
+    @media (max-width: $tablet-bp)
+      width: 90%
+      left: 5%
+      transform: none
+      -webkit-transform: none
+
+    @media (max-width: $mobile-bp)
+      width: calc(100% - 16px)
+      left: 8px
+      transform: none
+      -webkit-transform: none
+
+    &:first-letter
+      font-size: 20px
+      font-weight: bold
+      color: grey
+
+    img.cover
+      width: 100%
+
+    h3
+      margin: 12px 0
+
+  .dismiss
+    position: absolute
+    top: 4px
+    right: 4px
+    display: inline-block
+    padding: 4px 12px
+    font-size: 22px
+    font-weight: normal
+    color: red
+    cursor: pointer
+
+    &:hover
+      box-shadow: 0 0 6px lightgrey

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Simple book manager</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="skin.css" />
+    </head>
+    <body>
+        <div id="dzw">
+        <div id="dz">
+            <div class="home" :class="{out:addition}">
+                <div class="hat">
+                    <img src="logo.png" />
+                    <button @click="loadAddition">
+                        <i class="material-icons">add_box</i>
+                    </button>
+                    <div class="search-box">
+                        <i class="material-icons">search</i>
+                        <input
+                            type="text"
+                            placeholder="Keywords..."
+                            v-model="keywords"/>
+                    </div>
+                </div>
+                <div class="suit">
+                    <div class="case" v-for="book in cookbooks" v-key="book.id">
+                        <p class="title">{{book.title}}</p>
+                        <img :src="book.cover" />
+                        <p class="nomar">Author: {{book.author}}</p>
+                        <p class="nomar">Since: {{book.since}}</p>
+                    </div>
+                </div>
+                <div class="shoe">Copyright 2020 by OzGhost.</div>
+            </div>
+            <div class="addition">
+                <div class="hat">
+                    <button @click="addition = false">
+                        <i class="material-icons">double_arrow</i>
+                    </button>
+                    <div class="title">Create New Book</div>
+                </div>
+                <div class="suit">
+                    <div class="frame">
+                        <div class="line">
+                            <label class="label">Name</label>
+                            <input type="text" v-model="frame.title"/>
+                        </div>
+                        <div class="line">
+                            <label class="label">Author</label>
+                            <input type="text" v-model="frame.author"/>
+                        </div>
+                        <div class="line">
+                            <label class="label">Since</label>
+                            <input type="text" v-model="frame.since"/>
+                        </div>
+                        <div class="line">
+                            <label class="label">Description</label>
+                            <textarea rows="4"></textarea>
+                        </div>
+                        <div class="line">
+                            <button @click="add">Save</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="shoe">"Reading brings us unknown friends."</div>
+            </div>
+        </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+        <script src="base.js"></script>
+        <script src="muscle.js"></script>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+
+body {
+  background: black;
+  overflow: hidden;
+}
+
+audio {
+  width:  100%;
+}
+
+p {
+  color: silver;
+}
+
+span {
+  display: inline-block;
+  position: absolute;
+  bottom: -10px;
+  border-radius: 50%;
+  border: 1px solid white;
+}
+
+.w3 {
+  width: 3px;
+  height: 3px;
+}
+
+.w6 {
+  width: 6px;
+  height: 6px;
+}
+
+.w9 {
+  width: 9px;
+  height: 9px;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Writting training</title>
+        <style>
+body {
+    background: black;
+    line-height: 1.6;
+    text-align: center;
+    color: silver;
+}
+
+.holder {
+    width: 700px;
+    margin: 200px auto;
+    padding: 20px;
+}
+
+input {
+    border: 1px solid silver;
+    padding: 10px;
+    width: 660px;
+    color: white;
+    background: black;
+    transition: 0.2s ease;
+}
+
+input.wrong {
+    border-color: red;
+    transition: 0s ease;
+}
+
+#q {
+    color: white;
+    font-size: 30px;
+}
+
+label {
+    padding: 5px;
+}
+        </style>
+    </head>
+    <body>
+        <div class="holder">
+            <p>remains: <span id="remain">12</span></p>
+            <p id="q">Some question</p>
+            <form id="answer">
+                <label for="a">Typing what you see above</label>
+                <input id="a" type="text" name="input">
+            </form>
+        </div>
+        <script src="data.json"></script>
+        <script src="skeleton.js"></script>
+    </body>
+</html>

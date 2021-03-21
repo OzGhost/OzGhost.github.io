@@ -1,0 +1,103 @@
+
+body {
+    text-align: center;
+    background-color: black;
+    color: lightgrey;
+    padding: 0;
+    margin: 0;
+    transition: background-color 1s ease;
+}
+
+body,
+body * {
+    background-color: black;
+    transition: background-color .2s ease;
+}
+
+body.wrong,
+body.wrong #root,
+body.wrong * {
+    background-color: grey;
+    transition: 0s;
+}
+
+#root {
+    margin: 0 auto;
+    padding: 10px;
+    margin-top: 15px;
+    transition: background .5s ease;
+    background: black;
+}
+
+.score {
+    height: 100px;
+    border: 1px solid silver;
+    margin: 10px 0;
+    line-height: 100px;
+    font-size: 50px;
+    font-style: bold;
+    position: relative;
+}
+
+.score::before {
+    content: "Correct / Wrong:";
+    font-size: 16px;
+    position: absolute;
+    line-height: 1.6;
+    left: 10px;
+}
+
+.question {
+    height: 100px;
+    border: 1px solid silver;
+    margin: 10px 0 30px 0;
+    line-height: 98px;
+    font-size: 60px;
+    position: relative;
+}
+
+.spell {
+    position: absolute;
+    padding: 3px 10px;
+    background: grey;
+    color: black;
+    font-size: 18px;
+    line-height: 1;
+    top: calc(100% - 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+}
+
+.answer {
+    position: static;
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    height: 5em;
+    float: left;
+    background: black;
+    border: 1px solid silver;
+    font-size: 18px;
+    color: silver;
+}
+
+button:disabled {
+    color: black;
+}
+
+@media screen and (min-width: 600px) {
+    .answer {
+        display: inline-block;
+        width: calc(50% - 10px);
+    }
+    .answer:nth-child(even) {
+        margin-right: 10px;
+    }
+    .answer:nth-child(odd) {
+        margin-left: 10px;
+    }
+    .score::before {
+        line-height: inherit;
+    }
+}

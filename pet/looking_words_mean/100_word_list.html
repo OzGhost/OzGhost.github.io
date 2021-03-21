@@ -1,0 +1,2234 @@
+
+
+<!DOCTYPE html>
+<html xmlns:vcom xmlns:fb>
+<head>	
+	<title>100 Words Every Middle Schooler Should Know - Vocabulary List : Vocabulary.com</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <link rel="canonical" href="https://www.vocabulary.com/lists/558097" />
+     
+	<link rel="search" type="application/opensearchdescription+xml" href="https://www.vocabulary.com/search.xml" title="Vocabulary.com" />    
+	<link href="//cdn.vocab.com/images/ios-icons/114x114-off5pn.png" rel="apple-touch-icon" >
+	<link href="//cdn.vocab.com/images/favicons/favicon-32x32-2frmtt.png" sizes="32x32" rel="icon" type="image/png" >
+	<link href="//cdn.vocab.com/images/favicons/favicon-16x16-uf6i7e.png" sizes="16x16" rel="icon" type="image/png" >
+
+	
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+	<link href="//cdn.vocab.com/css/3/header-s3n52z.css" rel="stylesheet" type="text/css" >
+	<link href="//cdn.vocab.com/css/3/main-1qknc3h.css" rel="stylesheet" type="text/css" >
+	<link href="//cdn.vocab.com/css/3/grids-1440hlx.css" rel="stylesheet" type="text/css" >
+	
+	<link href="//cdn.vocab.com/css/progress-zjqx3f.css" rel="stylesheet" type="text/css" >
+	<link href="//cdn.vocab.com/css/dictionary-rlnzej.css" rel="stylesheet" type="text/css" >
+	<link href="//cdn.vocab.com/css/achievements-goaje8.css" rel="stylesheet" type="text/css" >
+	<link href="//cdn.vocab.com/css/leaderboards-1jskpje.css" rel="stylesheet" type="text/css" >
+	
+	<link href="//cdn.vocab.com/css/fonts/ss-social-circle-1708mdo.css" rel="stylesheet" type="text/css" >	
+	<link href="//cdn.vocab.com/css/fonts/ss-symbolicons-block-1u3l0c5.css" rel="stylesheet" type="text/css" >
+	<link href="//cdn.vocab.com/css/fonts/ss-standard-1nx9nw2.css" rel="stylesheet" type="text/css" >	
+		
+	<link href="//cdn.vocab.com/css/wordlist2-2oo31.css" rel="stylesheet" type="text/css" >
+<style>
+	.filterMessage {
+		font-size: 12px;
+		background-color: #F9FDBA;
+		color: #707070;
+		padding: 8px;
+		border-radius: 10px;
+		margin-top: 1em;
+		float: left;
+	}
+</style>
+		
+		
+	
+	<script>var loginData = {"validUser":false,"auth":{"loggedin":false},"perms":{},"points":0,"level":{"id":"L01","name":"Novice"}};</script>	
+	
+	
+
+<script src="//cdn.vocab.com/js/module-wp5h7s.js" type="text/javascript" ></script>
+	
+	<script>
+	(function(){
+		window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+		ga('create', 'UA-154986-6', 'auto');
+		
+		var deps=['vcom/usermenu', 'vcom/maintabs'  ]
+		try { window.localStorage.setItem('x','1'); window.localStorage.removeItem('x'); } catch (e) {
+			deps.unshift('localstorage');
+		}		
+		Module.after(deps,function(){
+			VCOM.authCache.get().then(function(auth){
+				if (auth.validUser) {
+					ga('set','dimension1',auth.paid?'paid':'free');
+					ga('set','dimension2',auth.ima||'other');
+					var role = (auth.auth && auth.auth.role) ? auth.auth.role.toLowerCase() : "";
+					if (role=='bill' && auth.plan) role = auth.plan;
+					if (role) ga('set','dimension3',role);
+					if (auth.classes && !auth.classes.empty)  ga('set','dimension4','inclass');
+				} else {
+					ga('set','dimension1','anon');					
+				}
+				ga('send', 'pageview');
+			});
+		});
+	})();
+	</script>
+
+		
+	<script async src='https://www.google-analytics.com/analytics.js'></script>
+	
+		
+	<script type="text/javascript">
+Module.after(['params','jquery'],function() {
+
+	jQuery(function($) {
+	
+		$('#wlOrder').on('change',function() {
+			if (order[this.value]) {
+				orderBy(order[this.value]);
+			}
+		});
+			
+		$('.page_wordlist .viewSelector a').on('click',function(){
+			changeView($(this).data('view'));
+		});
+	
+		function updateProgress() {
+			$('.page_wordlist ol.wordlist i.progress').remove()
+		$('.page_wordlist.learning li.learnable').each(function(){
+				$('<i class="progress"/>').attr({
+					'data-prg':this.getAttribute('prog'),
+					'title':this.getAttribute('prog')+'% Mastered'				
+				}).appendTo(this);
+		});
+			}
+		$('.page_wordlist').on('updateProgress',updateProgress);
+		
+		
+		window.changeView = changeView;
+		function changeView(view) {	
+			var lastHash = ''+hashParams;
+			if (view=='notes') {
+				delete hashParams.view;	
+			} else {
+				hashParams.view = view;							
+			}
+			$('#view_'+view).addClass('selected').siblings('a').removeClass('selected');
+			if (view=='notes') {
+				$('#wordlist').addClass('notesView').removeClass('listView').trigger('resize');		
+				} else {			
+				$('#wordlist').addClass('listView').removeClass('notesView').trigger('resize');						
+			}
+			if (''+hashParams != lastHash)	setHash();
+		}
+		
+		function orderBy(compare) {
+			$('#wordlist li.entry').sort(compare).appendTo($('#wordlist').scrollTop(0));
+			order.current=compare;
+		}
+		
+		
+		
+		var order = {}
+		order.alpha=function(a,b){
+			a=a.getAttribute('word');
+			b=b.getAttribute('word');
+			var al = normalize(a);
+			var bl = normalize(b);
+			if (al==bl) {
+				return a==b ? 0 : a<b ? -1 : 1; 
+			} else {
+				return al<bl ? -1 : 1; 
+			}		
+		};
+		
+		function normalize(word) {
+			return word.toLowerCase().replace(/[-\/\'\s]+/,'');
+		}
+		
+		order.ralpha=reverse(order.alpha);
+		order.freq=function(a,b){
+			a=parseFloat(a.getAttribute('freq'));
+			b=parseFloat(b.getAttribute('freq'));
+			if (isNaN(a)) {
+				return (isNaN(b)) ? 0 : 1;
+			} else if (isNaN(b)) {
+				return -1;
+			}		
+			return (a==b) ? 0 : (a<b) ? -1 : 1;			
+		};
+		order.rfreq=reverse(order.freq);
+		order.natural=function(a,b) {
+			a=parseInt(a.id.substring(5));
+			b=parseInt(b.id.substring(5));		
+			return (a==b) ? 0 : (a<b) ? -1 : 1;
+		}
+		order.progress=function(a,b) {
+			a=parseFloat(a.getAttribute('prog'));
+			b=parseFloat(b.getAttribute('prog'));
+			if (isNaN(a)) return isNaN(b) ? 0 : 1;
+			if (isNaN(b)) return -1;
+			return (a==b) ? 0 : (a<b) ? 1 : -1;	
+		}
+		
+		order.current = order.natural;
+		
+		function reverse(fn) {
+			return function(a,b) { return -fn(a,b); }
+		}
+		
+		var hashParams = null;	
+		function updateHash() {	
+			hashParams = new modules.params.Params((document.location.hash) ? document.location.hash.substring(0):'');
+			changeView((hashParams.view=='list')?'list':'notes');
+		}
+		
+		function setHash() {
+			var hash = hashParams.toString();
+			console.log('hash',hash+'');
+			if (hash.length || !window.history) {
+				document.location.hash= '#'+hashParams;
+			} else {
+				var loc = document.location.toString(), hm = loc.indexOf('#');
+				window.history.replaceState({},document.title,loc.substring(0,hm));
+			}
+		}
+		
+		$(window).on('hashchange',updateHash);
+		updateHash();
+		updateProgress();		
+	});
+});
+
+</script>
+	
+	<script type="text/javascript">	
+	Module.after(['cookie','timezone'],function() {
+		modules.cookie.Cookie.set('tz', modules.timezone.determine().name(), 3650, '/');
+	});
+	</script>
+	
+</head>
+<body class="with-top-tab with-tab-lists top-section-lists  loggedin">
+<div class="body-wrapper">
+<header class="page-header noselect" role="banner"><div class="limited-width"><nav class="main">
+		<a href="/" title="Vocabulary.com" class="logo" ><img src="//cdn.vocab.com/images/header/logo-1wobq9i.png" alt="Vocabulary.com" class="screen-only" ><img src="//cdn.vocab.com/images/logo-sar2cf.svg" class="print-only" ></a>
+		<div class="logininfo"></div><button role="button" aria-pressed="false" aria-label="navigation menu" class="hamburger menu"><span class="rows"></span></button></nav><nav class="tabs"><ul  ><li title="Play Vocabulary.com" class="playTab"><a  href="/play/"><span>PLAY</span></a></li><li title="Look up a word" class="dictTab empty"><a href="/dictionary/"><span>LOOK UP</span></a><div class="wrapper"><input id="search" type="text" autofocus spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" ><i role="button" class="ss-delete" ></i></div></li><li title="Find a Vocabulary List" class="listsTab selected"><a href="/lists/"><span>LISTS</span></a></li></ul></nav></div></header>
+<div class="fixed-tray"></div>
+
+
+<div id="page" class="page">
+<div id="pageContent" class="pageContent clearfloat">
+<div class="page_wordlist view-words ">
+	<div class="header with-header-margin">		
+
+		<div class="limited-width">
+		<div class="grid grid-3 responsive">
+
+		<div class="col span-2 leftpane">
+		<div class="breadcrumb">
+			<a class="level0" href="/lists/">VOCABULARY LISTS</a>
+			: <a class="level1" href="/lists/test-prep/">TEST PREP</a>
+		</div>
+		<div class="titleblock">
+			<h1 class="dynamictext">100 Words Every Middle Schooler Should Know</h1>
+			<div class="byline">
+			<span class="date">December 12, 2014
+			
+			</span>		
+			
+			<span class="author"><span class="profileLink">By <a href="/profiles/B0O97M2G11KL4B" target="_top">Vocabulary.com</a><span class="location"> (NY)</span><span class="badges"> <a href="#" target="_top" title="Vocabulary.com Moderator" class="badge moderator" ><img src="//cdn.vocab.com/images/profiles/mod-badge-sm-yugkxz.gif" alt="Vocabulary.com Moderator" class="badge" ></a></span></span></span>
+				
+			</div>
+			
+			
+			<div class="description">American Heritage Dictionaries normally feature about 70,000 entries. From that multitude, the editors have chosen 100 words that are neither obscure nor outlandish that could give middle schoolers more aplomb and aptitude in their verbal encounters. If you're not sure whether that is something you need, study this list.
+<br> Words selected by the Editors of the American Heritage® Dictionaries. Published by Houghton Mifflin Harcourt Publishing Company.<div role="button" class="readmore">Read more...</div></div>
+				
+			
+			
+		</div>
+		<script>
+		Module.after(['jquery'],function() {
+			jQuery(function($){
+				var $desc = $('.titleblock .description').addClass('v-overflow');
+				$desc.find('.readmore').one('click',function(){
+					$desc.toggleClass('open');
+					$(window).off('resize orientationchange',reclamp);
+				});
+				function reclamp() {		
+					$desc.toggleClass('v-overflowed',$desc.length && $desc[0].scrollHeight > $desc.height());		
+				}
+				$(window).on('resize orientationchange',reclamp);
+				reclamp();	
+			});
+		});
+		</script>
+		
+		
+			<div class="rating">
+				<label>Rate this list:</label>
+				<vcom:votes objid="558097" objtype="wl" cansave="true" objtypename="Vocabulary List" ></vcom:votes>
+			</div>
+		
+		
+		<section class="activities screen-only cards"> 			
+	<div class="clearfloat limited-width">
+	<h3>Activities for this list:</h3>
+	<ul>
+		
+		<li class="practice">
+			<a href="/lists/558097/practice" class="card clearfloat">
+			
+			<h4><i></i>Practice</h4>
+			<blockquote>
+			Answer a few questions on each word on this list. <span class="hide-mobile">Get one wrong? We'll ask some follow-up questions.</span>
+			Use it to prep for your next quiz!
+									
+			</blockquote>
+			<div class="actions">
+				
+					
+					
+					<button>Start Practice Session</button>
+				
+				
+			</div>
+			</a>
+		</li>
+		
+		<li class="spellingbee">
+			<a href="/lists/558097/bee" class="card clearfloat">
+			
+			<h4><i></i>Spelling Bee</h4>
+			<blockquote>
+			Test your spelling acumen.  See the definition, listen to the word, then try to spell it correctly. 
+			<span class="hide-mobile">Beat your last streak, or best your overall time.  Spellers of the world, untie!</span>
+			</blockquote>
+			<div class="actions">
+				
+					
+					
+					<button>Start Spelling Bee</button>
+				
+				
+			</div>
+			</a>
+		</li>
+	</ul>
+				
+	<script>
+	Module.after(['jquery'],function() {
+		jQuery(function($){
+			$('.page_wordlist').on('click','*[data-action="restart-practice"]',function(e){
+				if (confirm('Are you sure you would like to restart your practice session?')) {
+					document.location.href='/lists/558097/reset';						
+				}
+				e.preventDefault();
+				e.stopPropagation();
+				return false;		
+			});	
+			$('.page_wordlist').on('click','*[data-action="restart-bee"]',function(e){
+				if (confirm('Are you sure you would like to restart your spelling bee session?')) {
+					document.location.href='/lists/558097/bee/reset';						
+				}
+				e.preventDefault();
+				e.stopPropagation();
+				return false;		
+			});	
+		});
+	});
+</script>	
+</div>		
+</section>
+	
+		
+		</div>
+		
+		<div class="col rightpane" >
+			
+			<div class="item listprogress"></div>
+			<div class="item tools" data-wordlist-id="558097"
+			                        data-learning="false"
+			                        data-learnable="100"
+			                        data-unlearnable="0" 
+			                        data-progress="0"
+			                        data-bookmarked="false">				
+			                 
+				<a class="button" href="/lists/558097/assign" ><i class="ss-attach icon"></i> Assign this list</a>	
+				<vcom:share itemtype="list" label="Share this list..." ></vcom:share>
+				<a class="button print" href="javascript:void(0);" data-action="print"><i class="ss-fax icon"></i> Print this list</a>
+				
+			   	                    
+				<a class="button" href="javascript:void(0);" data-action="copy"><i class="ss-fill icon"></i> Copy this list to...</a>			
+				<a class="button" href="/lists/new" ><i class="ss-compose icon"></i> Start a new list</a>									
+			</div>
+						
+			<script>Module.after('vcom/listtools');</script>
+		</div>	
+		</div>				
+	</div>
+	
+</div>	
+	<div class="tabbar clearfloat">
+	<div class="tabcontainer limited-width">
+	
+	
+	<a class="selected" href="/lists/558097">100&nbsp;Words</a>
+
+	
+	
+	
+	<a class="ss-attach assign"  href="/lists/558097/assign">Assignments</a>
+	
+
+	
+	
+	
+	</div>
+</div>	
+		
+	
+	<div class="content-wrapper"><div class="centeredContent">
+	
+	<div class="viewSelector">
+		<label>show:</label>
+		<a data-view="notes" href="#view=notes" id="view_notes">definitions &amp; notes</a>
+		<a data-view="list" href="#view=list" id="view_list">only words</a>			
+		
+		<select id="wlOrder">
+		<option value="natural">in list order</option>
+		<option value="alpha">from A to Z</option>
+		<option value="ralpha">from Z to A</option>
+		<option value="freq">from easy to hard</option>
+		<option value="rfreq">from hard to easy</option>
+		
+	</select>
+		
+	</div>
+	
+	
+	<ol class="wordlist notesView" id="wordlist">	
+
+
+
+
+
+<li class="entry learnable" id="entry0"
+ lang="en" word="adversary" freq="485.22" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/adversary">adversary</a>	
+<div class="definition">someone who offers opposition</div>
+<div class="example">The students are united by shared suffering, and by a common 
+<strong>adversary</strong>.<a class="source" href="http://tmagazine.blogs.nytimes.com/2014/11/10/london-taxi-test-knowledge/" rel="nofollow">New York Times <span class="date">(Nov 10, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry1"
+ lang="en" word="aplomb" freq="9486.8" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/aplomb">aplomb</a>	
+<div class="definition">great coolness and composure under strain</div>
+<div class="example">I wish I had handled it with 
+<strong>aplomb</strong>.<a class="source" href="http://parenting.blogs.nytimes.com/2014/05/18/youre-not-my-real-mother/" rel="nofollow">New York Times <span class="date">(May 18, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry2"
+ lang="en" word="apprehensive" freq="1225.93" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/apprehensive">apprehensive</a>	
+<div class="definition">in fear or dread of possible evil or harm</div>
+<div class="example">Virga still feels 
+<strong>apprehensive</strong> when visiting an unfamiliar zoo.<a class="source" href="http://www.nytimes.com/2014/07/06/magazine/zoo-animals-and-their-discontents.html" rel="nofollow">New York Times <span class="date">(Jul 3, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry3"
+ lang="en" word="aptitude" freq="1738.62" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/aptitude">aptitude</a>	
+<div class="definition">inherent ability</div>
+<div class="example">I was recently asked in an interview, what is more valued by companies – 
+<strong>aptitude</strong> or attitude?&nbsp;<a class="source" href="http://www.forbes.com/sites/elenabajic/2014/09/12/how-to-adjust-your-attitude-and-keep-your-job/" rel="nofollow">Forbes <span class="date">(Sep 12, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry4"
+ lang="en" word="attentive" freq="390.86" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/attentive">attentive</a>	
+<div class="definition">taking heed</div>
+<div class="example">You make sure to be extra 
+<strong>attentive</strong> to your friend.<a class="source" href="http://www.xojane.com/relationships/how-to-break-up-with-a-toxic-friend" rel="nofollow">Time <span class="date">(Oct 2, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry5"
+ lang="en" word="banish" freq="321.05" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/banish">banish</a>	
+<div class="definition">send away from a place of residence, as for punishment</div>
+<div class="example">Napoleon loses so big that he is 
+<strong>banished</strong> to an island.<a class="source" href="http://www.nytimes.com/2014/12/07/sports/football/jets-giants-better-ways-to-spend-your-sunday.html" rel="nofollow">New York Times <span class="date">(Dec 5, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry6"
+ lang="en" word="barricade" freq="1071.4" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/barricade">barricade</a>	
+<div class="definition">block off with barriers</div>
+<div class="example">The Secret Service ordered nearby streets and parking lots 
+<strong>barricaded</strong> for security.<a class="source" href="http://www.washingtontimes.com/news/2014/dec/1/43rd-president-in-suburban-chicago-to-sign-book/" rel="nofollow">Washington Times <span class="date">(Dec 1, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry7"
+ lang="en" word="bluff" freq="481.58" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/bluff">bluff</a>	
+<div class="definition">frighten someone by pretending to be stronger than one is</div>
+<div class="example">Sporting a pith helmet, Nixon observed that “whoever is talking the loudest is pretty sure to be 
+<strong>bluffing</strong>.”<a class="source" href="http://www.nytimes.com/2014/09/20/upshot/harry-truman-five-card-stud-and-the-cold-war.html" rel="nofollow">New York Times <span class="date">(Sep 19, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry8"
+ lang="en" word="brackish" freq="6163.31" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/brackish">brackish</a>	
+<div class="definition">slightly salty</div>
+<div class="example"><strong>Brackish</strong> water can be used, but freshwater is easier and less costly.<a class="source" href="http://www.nytimes.com/2014/05/15/us/californias-thirst-shapes-debate-over-fracking.html" rel="nofollow">New York Times <span class="date">(May 14, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry9"
+ lang="en" word="brandish" freq="1656.83" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/brandish">brandish</a>	
+<div class="definition">move or swing back and forth</div>
+<div class="example">Hart 
+<strong>brandished</strong> a “Free Hugs” sign as he stood alone in front of a police barricade.<a class="source" href="http://www.msnbc.com/msnbc/ferguson-hug-between-protester-and-police-office-goes-viral" rel="nofollow">MSNBC <span class="date">(Nov 30, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry10"
+ lang="en" word="circumference" freq="1280.01" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/circumference">circumference</a>	
+<div class="definition">the size of something as given by the distance around it</div>
+<div class="example">That's almost 10 times the 
+<strong>circumference</strong> of the Earth, which is a surprisingly small 24,859.82 miles.<a class="source" href="http://www.bbc.co.uk/newsbeat/30275552" rel="nofollow">BBC <span class="date">(Dec 1, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry11"
+ lang="en" word="commotion" freq="984.06" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/commotion">commotion</a>	
+<div class="definition">confused movement</div>
+<div class="example">Moments later came 
+<strong>commotion</strong>, followed by shouts of “Stop pushing me!”<a class="source" href="http://www.msnbc.com/msnbc/unrest-ferguson-reveals-city-the-edge" rel="nofollow">MSNBC <span class="date">(Sep 26, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry12"
+ lang="en" word="concoction" freq="6355.47" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/concoction">concoction</a>	
+<div class="definition">any foodstuff made by combining different ingredients</div>
+<div class="example">There are some food combos that blend beautifully with each other to create truly tasty 
+<strong>concoctions</strong>.<a class="source" href="http://health.usnews.com/health-news/blogs/eat-run/2014/09/04/food-marriages-the-greatest-food-love-stories-of-all-time" rel="nofollow">US News <span class="date">(Sep 4, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry13"
+ lang="en" word="conspicuous" freq="288.02" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/conspicuous">conspicuous</a>	
+<div class="definition">obvious to the eye or mind</div>
+<div class="example">Today, the link is more 
+<strong>conspicuous</strong>: highlighted in blue, it appears directly beneath the site’s login form.<a class="source" href="http://www.nytimes.com/2014/10/23/upshot/one-third-of-top-websites-restrict-customers-right-to-sue.html" rel="nofollow">New York Times <span class="date">(Oct 23, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry14"
+ lang="en" word="contortion" freq="4064.02" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/contortion">contortion</a>	
+<div class="definition">a tortuous and twisted shape or position</div>
+<div class="example">There was tumbling, human pyramids and bodies stretched into extraordinary 
+<strong>contortions</strong>.<a class="source" href="http://www.bbc.co.uk/news/world-africa-23820941" rel="nofollow">BBC <span class="date">(Aug 25, 2013)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry15"
+ lang="en" word="counter" freq="104.43" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/counter">counter</a>	
+<div class="definition">speak in response</div>
+<div class="example">The seller can then accept, 
+<strong>counter</strong> or reject the offer.<a class="source" href="http://www.usnews.com/news/technology/articles/2014/12/09/amazon-introduces-make-an-offer-service" rel="nofollow">US News <span class="date">(Dec 9, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry16"
+ lang="en" word="cunning" freq="284.69" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/cunning">cunning</a>	
+<div class="definition">shrewdness as demonstrated by being skilled in deception</div>
+<div class="example">Moreover, it was no secret that Cleopatra had ruthless 
+<strong>cunning</strong> and superior intelligence.<a class="source" href="http://www.amazon.com/dp/1402757107?tag=vocabularyc00-20" rel="nofollow">Sterling Biographies®: Cleopatra: Egypt&#039;s Last and Greatest Queen</a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry17"
+ lang="en" word="debris" freq="1812.11" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/debris">debris</a>	
+<div class="definition">the remains of something that has been destroyed</div>
+<div class="example">The blast rattled their homes and sent 
+<strong>debris</strong> flying onto nearby properties, they said.<a class="source" href="http://www.washingtontimes.com/news/2014/dec/4/massive-explosion-destroys-northeastern-pa-home/" rel="nofollow">Washington Times <span class="date">(Dec 4, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry18"
+ lang="en" word="defiance" freq="458.9" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/defiance">defiance</a>	
+<div class="definition">a hostile challenge</div>
+<div class="example">Schools still could expel students for violating school rules or laws and could suspend students for willful 
+<strong>defiance</strong> of authorities in grades 4 through 12.<a class="source" href="http://www.washingtontimes.com/news/2014/sep/27/governor-blocks-expulsion-for-willful-defiance/" rel="nofollow">Washington Times <span class="date">(Sep 27, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry19"
+ lang="en" word="deft" freq="1008.53" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/deft">deft</a>	
+<div class="definition">skillful in physical movements; especially of the hands</div>
+<div class="example">To make it work requires a 
+<strong>deft</strong> hand.<a class="source" href="http://www.forbes.com/sites/toddessig/2014/09/25/leadership-lessons-from-the-peoples-climate-march/" rel="nofollow">Forbes <span class="date">(Sep 25, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry20"
+ lang="en" word="destination" freq="460.07" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/destination">destination</a>	
+<div class="definition">the place designated as the end, as of a race or journey</div>
+<div class="example">Airports get stacked up with planes that can’t take off for their 
+<strong>destinations</strong>.<a class="source" href="http://www.forbes.com/sites/michelinemaynard/2014/12/09/best-and-worst-airlines-for-winter-holiday-travel-2015/" rel="nofollow">Forbes <span class="date">(Dec 9, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry21"
+ lang="en" word="diminish" freq="256.27" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/diminish">diminish</a>	
+<div class="definition">decrease in size, extent, or range</div>
+<div class="example">By Friday morning, most of the heavy rain is expected to 
+<strong>diminish</strong>.<a class="source" href="http://www.latimes.com/local/lanow/la-me-ln-winter-storm-preparations-20141210-story.html" rel="nofollow">Los Angeles Times <span class="date">(Dec 10, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry22"
+ lang="en" word="disdain" freq="426.22" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/disdain">disdain</a>	
+<div class="definition">lack of respect accompanied by a feeling of intense dislike</div>
+<div class="example">In the visage of Grumpy Cat, it seems, her fans found the perfect holy expression of indifferent 
+<strong>disdain</strong> for all things.<a class="source" href="http://www.washingtonpost.com/entertainment/tv/grumpy-cats-lifetime-holiday-movie-claws-out-for-claus/2014/11/28/59792c8c-7717-11e4-bd1b-03009bd3e984_story.html" rel="nofollow">Washington Post</a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry23"
+ lang="en" word="dismal" freq="472.1" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/dismal">dismal</a>	
+<div class="definition">causing dejection</div>
+<div class="example">It’s been a pretty 
+<strong>dismal</strong> month, as far as world events go, but the news wasn’t all bad thanks to some very entertaining on-air mishaps.<a class="source" href="http://time.com/3206223/best-funniest-news-bloopers-august/" rel="nofollow">Time <span class="date">(Aug 28, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry24"
+ lang="en" word="dispel" freq="1012.41" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/dispel">dispel</a>	
+<div class="definition">force to go away</div>
+<div class="example">For most of us, 
+<strong>dispelling</strong> the darkness is as simple as turning on a light.<a class="source" href="http://time.com/3534152/banish-the-night/" rel="nofollow">Time <span class="date">(Oct 23, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry25"
+ lang="en" word="eavesdrop" freq="3611.05" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/eavesdrop">eavesdrop</a>	
+<div class="definition">listen without the speaker's knowledge</div>
+<div class="example">They 
+<strong>eavesdrop</strong> on the noises that other birds make while hiding food in order to steal the stash later, new research shows.<a class="source" href="http://news.sciencemag.org/plants-animals/2014/11/bird-burglars-listen-loot" rel="nofollow">Science Magazine <span class="date">(Nov 21, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry26"
+ lang="en" word="egregious" freq="4086.49" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/egregious">egregious</a>	
+<div class="definition">conspicuously and outrageously bad or reprehensible</div>
+<div class="example">Prosecutors questioned him about killings and other 
+<strong>egregious</strong> human rights abuses perpetrated by his regime.<a class="source" href="http://www.latimes.com/local/obituaries/la-me-jean-claude-duvalier-20141004-story.html" rel="nofollow">Los Angeles Times <span class="date">(Oct 4, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry27"
+ lang="en" word="ember" freq="1375.34" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/ember">ember</a>	
+<div class="definition">a hot, smoldering fragment of wood left from a fire</div>
+<div class="example">“Every hot spot is an 
+<strong>ember</strong> that, if not contained, can become a new fire,” Obama said.<a class="source" href="http://www.latimes.com/nation/la-na-obama-ebola-remarks-20141202-story.html" rel="nofollow">Los Angeles Times <span class="date">(Dec 2, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry28"
+ lang="en" word="emerge" freq="98.72" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/emerge">emerge</a>	
+<div class="definition">come out into view, as from concealment</div>
+<div class="example">They say that program has helped them 
+<strong>emerge</strong> from the shadows, making possible a work permit, a Social Security number and enhanced self-respect.<a class="source" href="http://www.washingtonpost.com/politics/obamas-2012-daca-move-offers-a-window-into-pros-and-cons-of-executive-action/2014/11/30/88be7a36-7188-11e4-893f-86bd390a3340_story.html" rel="nofollow">Washington Post</a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry29"
+ lang="en" word="engross" freq="916.02" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/engross">engross</a>	
+<div class="definition">consume all of one's attention or time</div>
+<div class="example">I don’t know how long I was reading; I was so 
+<strong>engrossed</strong> in the paper that I did not hear any footsteps.<a class="source" href="http://www.amazon.com/dp/0316548189?tag=vocabularyc00-20" rel="nofollow">Long Walk to Freedom</a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry30"
+ lang="en" word="exasperation" freq="2706.89" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/exasperation">exasperation</a>	
+<div class="definition">a feeling of annoyance</div>
+<div class="example">Like many a teenager on his school holidays, Parys is in bed, his mother explains with 
+<strong>exasperation</strong>.<a class="source" href="http://www.theguardian.com/lifeandstyle/2014/aug/02/alison-lapper-disabled-people-drain-on-society" rel="nofollow">The Guardian <span class="date">(Aug 2, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry31"
+ lang="en" word="exhilarate" freq="1182.81" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/exhilarate">exhilarate</a>	
+<div class="definition">fill with sublime emotion</div>
+<div class="example">“To see Yosemite Falls coming to life this morning is truly 
+<strong>exhilarating</strong>,”&nbsp;Park Superintendent Don Neubacher said in a statement.&nbsp;<a class="source" href="http://www.latimes.com/local/lanow/la-me-ln-yosemite-waterfalls-flowing-20141203-story.html" rel="nofollow">Los Angeles Times <span class="date">(Dec 3, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry32"
+ lang="en" word="falter" freq="411.56" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/falter">falter</a>	
+<div class="definition">move hesitatingly, as if about to give way</div>
+<div class="example">“The rocket has 
+<strong>faltered</strong>, but it won’t crash,” he said.<a class="source" href="http://www.nytimes.com/2014/11/21/world/asia/japans-economic-woes-cast-new-doubt-on-abenomics.html" rel="nofollow">New York Times <span class="date">(Nov 20, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry33"
+ lang="en" word="foresight" freq="1482.86" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/foresight">foresight</a>	
+<div class="definition">seeing ahead; knowing in advance; foreseeing</div>
+<div class="example">But nobody had the wherewithal or 
+<strong>foresight</strong> to think that day would actually happen.<a class="source" href="http://www.msnbc.com/msnbc/trymaine-lee-responded-your-questions-about-missouri-school-districts" rel="nofollow">MSNBC <span class="date">(Jul 3, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry34"
+ lang="en" word="fragrance" freq="783.84" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/fragrance">fragrance</a>	
+<div class="definition">a distinctive odor that is pleasant</div>
+<div class="example">After 30 minutes in the oven, what hits you first is the enticing, warm 
+<strong>fragrance</strong> that fills your kitchen.<a class="source" href="http://www.washingtonpost.com/lifestyle/food/ellie-kriegers-healthful-brown-betty-with-apples-and-cranberries/2014/10/20/83de8e5c-5306-11e4-ba4b-f6333e2c0453_story.html" rel="nofollow">Washington Post</a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry35"
+ lang="en" word="furtive" freq="1024.67" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/furtive">furtive</a>	
+<div class="definition">secret and sly or sordid</div>
+<div class="example">What muffled whispers do they share, what 
+<strong>furtive</strong> games are they playing?<a class="source" href="http://www.theguardian.com/artanddesign/2012/dec/18/mike-kelley-nonconformist-whole-life-here" rel="nofollow">The Guardian <span class="date">(Dec 18, 2012)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry36"
+ lang="en" word="grueling" freq="7828.36" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/grueling">grueling</a>	
+<div class="definition">characterized by effort to the point of exhaustion</div>
+<div class="example">As of Dec. 19, 22 students will have made it through a 
+<strong>grueling</strong> curriculum that requires about 700 hours of computer code.<a class="source" href="http://www.washingtontimes.com/news/2014/dec/10/people-working-to-change-the-face-of-the-tech-indu/" rel="nofollow">Washington Times <span class="date">(Dec 10, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry37"
+ lang="en" word="gusto" freq="3549.28" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/gusto">gusto</a>	
+<div class="definition">vigorous and enthusiastic enjoyment</div>
+<div class="example">They each approach their tasks with 
+<strong>gusto</strong> that can only be admired, even if the results can’t.<a class="source" href="http://www.washingtontimes.com/news/2014/aug/21/review-sin-city-dives-back-into-a-noir-abyss/" rel="nofollow">Washington Times <span class="date">(Aug 21, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry38"
+ lang="en" word="habitation" freq="657.74" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/habitation">habitation</a>	
+<div class="definition">the act of dwelling in or living permanently in a place</div>
+<div class="example">Although the area is not fit for human 
+<strong>habitation</strong>, many poor people who work in the coal mines live here.<a class="source" href="http://www.bbc.co.uk/news/world-asia-india-23422068" rel="nofollow">BBC <span class="date">(Aug 13, 2013)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry39"
+ lang="en" word="hasten" freq="152.89" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/hasten">hasten</a>	
+<div class="definition">speed up the progress of; facilitate</div>
+<div class="example">Rather than wait for that day, he set out to 
+<strong>hasten</strong> its arrival.<a class="source" href="http://www.scientificamerican.com/article/advanced-biofuels-power-up-amid-resistance/" rel="nofollow">Scientific American <span class="date">(Sep 3, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry40"
+ lang="en" word="headway" freq="2475.73" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/headway">headway</a>	
+<div class="definition">forward movement</div>
+<div class="example">At times, you feel like you’re struggling to run forward, going through the motions but making no 
+<strong>headway</strong>, frozen in place.<a class="source" href="http://www.washingtonpost.com/entertainment/music/florencia-in-the-amazon-with-goerke-an-ephemeral-dream-in-first-wno-outing/2014/09/21/5553a886-41a1-11e4-9a15-137aa0153527_story.html" rel="nofollow">Washington Post</a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry41"
+ lang="en" word="ignite" freq="1394.95" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/ignite">ignite</a>	
+<div class="definition">cause to start burning</div>
+<div class="example">Firefighters say the blaze started when stain-soaked rags 
+<strong>ignited</strong> on the front porch.<a class="source" href="http://www.washingtontimes.com/news/2014/dec/10/3-flee-blaze-that-damages-home-in-hastings/" rel="nofollow">Washington Times <span class="date">(Dec 10, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry42"
+ lang="en" word="illuminate" freq="321.65" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/illuminate">illuminate</a>	
+<div class="definition">make free from confusion or ambiguity</div>
+<div class="example">The problem is that for 
+<strong>illuminating</strong> answers, you need to ask the right questions.<a class="source" href="http://www.nytimes.com/2014/12/07/your-money/elusive-effects-of-the-black-friday-boycott.html" rel="nofollow">New York Times <span class="date">(Dec 6, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry43"
+ lang="en" word="impending" freq="911.65" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/impending">impending</a>	
+<div class="definition">close in time; about to occur</div>
+<div class="example">First, he gives the enemy 12 days of warning about 
+<strong>impending</strong> air attacks.<a class="source" href="http://www.washingtonpost.com/opinions/charles-krauthammer-bombing-for-show-or-for-effect/2014/10/09/2e38136c-4fda-11e4-babe-e91da079cb8a_story.html" rel="nofollow">Washington Post</a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry44"
+ lang="en" word="imperious" freq="857.78" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/imperious">imperious</a>	
+<div class="definition">having or showing arrogant superiority</div>
+<div class="example">It was a little scary how quickly he flipped from friendly to 
+<strong>imperious</strong>.<a class="source" href="http://www.nytimes.com/2013/09/08/magazine/paul-kagame-rwanda.html?pagewanted=all" rel="nofollow">New York Times <span class="date">(Sep 4, 2013)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry45"
+ lang="en" word="jabber" freq="4927.77" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/jabber">jabber</a>	
+<div class="definition">talk in a noisy, excited, or declamatory manner</div>
+<div class="example">A parrot 
+<strong>jabbered</strong> atop its cage and a monkey squealed and battered at its bronze ring, until its owner brought bananas.<a class="source" href="http://www.gutenberg.org/ebooks/39468" rel="nofollow">Bartlett, Paul Alexander</a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry46"
+ lang="en" word="jargon" freq="2033.91" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/jargon">jargon</a>	
+<div class="definition">technical terminology characteristic of a particular subject</div>
+<div class="example">Steer clear of 
+<strong>jargon</strong>, me-too claims, and statements without substance.<a class="source" href="http://www.forbes.com/sites/groupthink/2014/12/05/its-clear-local-businesses-need-more-transparency-from-digital-marketing-providers/" rel="nofollow">Forbes <span class="date">(Dec 5, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry47"
+ lang="en" word="jostle" freq="1639.39" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/jostle">jostle</a>	
+<div class="definition">make one's way by pushing or shoving</div>
+<div class="example">In Jerusalem, great religions have crowded and 
+<strong>jostled</strong> their way down through millenniums.<a class="source" href="http://www.latimes.com/world/middleeast/la-fg-israel-religious-war-20141122-story.html" rel="nofollow">Los Angeles Times <span class="date">(Nov 21, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry48"
+ lang="en" word="jut" freq="2033.56" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/jut">jut</a>	
+<div class="definition">extend out or project in space</div>
+<div class="example">From its long beak 
+<strong>juts</strong> a fearsome tooth.<a class="source" href="http://www.nytimes.com/2014/11/11/nyregion/where-audubon-found-repose-sprayed-on-specimens-alight.html" rel="nofollow">New York Times <span class="date">(Nov 10, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry49"
+ lang="en" word="kindle" freq="327.69" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/kindle">kindle</a>	
+<div class="definition">call forth, as an emotion, feeling, or response</div>
+<div class="example">Recently in class I saw the fire of an idea flicker in a first-year student’s eyes—and so to 
+<strong>kindle</strong> it I cold-called him.<a class="source" href="http://www.forbes.com/sites/dporterfield/2014/09/16/cultivating-student-voices-and-free-speech-on-college-campuses/" rel="nofollow">Forbes <span class="date">(Sep 16, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry50"
+ lang="en" word="knoll" freq="1712.95" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/knoll">knoll</a>	
+<div class="definition">a small natural hill</div>
+<div class="example">The home, set on a quarter-acre 
+<strong>knoll</strong>, has views of the city, the Hollywood Reservoir and the Hollywood sign.<a class="source" href="http://www.latimes.com/business/realestate/hot-property/la-fi-hotprop-20140810-story.html" rel="nofollow">Los Angeles Times <span class="date">(Aug 9, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry51"
+ lang="en" word="luminous" freq="721.03" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/luminous">luminous</a>	
+<div class="definition">softly bright or radiant</div>
+<div class="example">It was briefly one of the most 
+<strong>luminous</strong> stars in the galaxy.<a class="source" href="http://www.nytimes.com/2014/09/03/science/space/the-v838-monocerotis-star-still-has-astronomers-heads-exploding.html" rel="nofollow">New York Times <span class="date">(Sep 3, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry52"
+ lang="en" word="malleable" freq="9078.81" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/malleable">malleable</a>	
+<div class="definition">easily influenced</div>
+<div class="example">“Memory is so 
+<strong>malleable</strong> or volatile that each time we see something, the memory is actually influenced and re-created.”<a class="source" href="http://www.washingtontimes.com/news/2014/oct/18/ada-sheriff-works-to-improve-eyewitness-procedures/" rel="nofollow">Washington Times <span class="date">(Oct 18, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry53"
+ lang="en" word="materialize" freq="2838.09" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/materialize">materialize</a>	
+<div class="definition">come into being; become reality</div>
+<div class="example">By the time people reach their 70s, they’re beginning to look back at the plans they made and dreams they had that never 
+<strong>materialized</strong>.<a class="source" href="http://www.quora.com/What-are-some-life-lessons-people-in-their-70s-can-share-with-the-younger-generations/answer/Dee-Dees" rel="nofollow">Time <span class="date">(Nov 25, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry54"
+ lang="en" word="meander" freq="3045.64" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/meander">meander</a>	
+<div class="definition">move or cause to move in a sinuous or circular course</div>
+<div class="example">Instead of straight paths and noisy throngs, the new park will have 
+<strong>meandering</strong> walkways and quiet places for picnicking nestled in gently sloping "lawn valleys."<a class="source" href="http://www.chicagotribune.com/news/columnists/ct-maggie-daley-park-kamin-met-0724-20140726,0,6860360.column" rel="nofollow">Chicago Tribune <span class="date">(Jul 26, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry55"
+ lang="en" word="meticulous" freq="3383.74" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/meticulous">meticulous</a>	
+<div class="definition">marked by extreme care in treatment of details</div>
+<div class="example">It's a six-page scene and very 
+<strong>meticulous</strong>, step by step.<a class="source" href="http://www.latimes.com/entertainment/tv/la-et-st-ca-noah-cawley-conversation-20140824-story.html" rel="nofollow">Los Angeles Times <span class="date">(Aug 24, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry56"
+ lang="en" word="misgiving" freq="1011.54" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/misgiving">misgiving</a>	
+<div class="definition">uneasiness about the fitness of an action</div>
+<div class="example">Quite a few said they had come despite the 
+<strong>misgivings</strong> of parents who wanted them to focus on studying.<a class="source" href="http://www.nytimes.com/2014/09/27/world/asia/hong-kong-democracy-leader-says-limits-harm-rest-of-china.html" rel="nofollow">New York Times <span class="date">(Sep 26, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry57"
+ lang="en" word="momentum" freq="1007.58" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/momentum">momentum</a>	
+<div class="definition">an impelling force or strength</div>
+<div class="example">Mitchell believed that a song’s 
+<strong>momentum</strong> should always push upward, ascending like the slope of a mountain into the unknown.<a class="source" href="http://www.washingtonpost.com/entertainment/music/al-green-the-soul-legend-and-kennedy-center-honoree-is-still-tired-of-being-alone/2014/12/05/457f2c3e-75b6-11e4-a755-e32227229e7b_story.html" rel="nofollow">Washington Post</a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry58"
+ lang="en" word="monotonous" freq="692.84" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/monotonous">monotonous</a>	
+<div class="definition">sounded or spoken in a tone unvarying in pitch</div>
+<div class="example">Unfortunately, their 
+<strong>monotonous</strong> verbiage reminds me of Charlie Brown’s teacher in the “Peanuts” TV shows.<a class="source" href="http://www.washingtonpost.com/opinions/confessions-of-a-metro-commuter/2014/10/17/b1e06dfa-53d5-11e4-809b-8cc0a295c773_story.html" rel="nofollow">Washington Post</a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry59"
+ lang="en" word="multitude" freq="196.75" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/multitude">multitude</a>	
+<div class="definition">a large indefinite number</div>
+<div class="example">They surround you in their 
+<strong>multitudes</strong> - hundreds, maybe thousands of them, swooping and stinging and injecting venom into your flesh.<a class="source" href="http://www.bbc.co.uk/news/magazine-29558688" rel="nofollow">BBC <span class="date">(Oct 9, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry60"
+ lang="en" word="muster" freq="565.38" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/muster">muster</a>	
+<div class="definition">gather or bring together</div>
+<div class="example">Fans chanted and hollered and enriched the arena with as much life as they could possibly 
+<strong>muster</strong>.<a class="source" href="http://www.nytimes.com/2014/12/10/sports/basketball/louisville-and-villanova-pull-away-and-stay-unbeaten-.html" rel="nofollow">New York Times <span class="date">(Dec 10, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry61"
+ lang="en" word="narrate" freq="148.87" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/narrate">narrate</a>	
+<div class="definition">give a detailed account of</div>
+<div class="example">Standing amid bags of garbage, he starts sorting, tearing open plastic bags and 
+<strong>narrating</strong> his finds.<a class="source" href="http://www.latimes.com/nation/la-na-dumpster-diver-20141016-story.html" rel="nofollow">Los Angeles Times <span class="date">(Oct 15, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry62"
+ lang="en" word="obscure" freq="180.91" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/obscure">obscure</a>	
+<div class="definition">not clearly understood or expressed</div>
+<div class="example">The book contains little plot, an abundance of 
+<strong>obscure</strong> poetry and the untimely death of three protagonists.<a class="source" href="http://www.latimes.com/books/jacketcopy/la-ca-jc-miriam-toews-20141207-story.html" rel="nofollow">Los Angeles Times <span class="date">(Dec 5, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry63"
+ lang="en" word="ominous" freq="624.02" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/ominous">ominous</a>	
+<div class="definition">threatening or foreshadowing evil or tragic developments</div>
+<div class="example">“Evil forces around the world want to harm Americans every day,” an 
+<strong>ominous</strong> voiceover states.<a class="source" href="http://time.com/3478254/isis-nrcc-border-plot-gop-2014/" rel="nofollow">Time <span class="date">(Oct 7, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry64"
+ lang="en" word="outlandish" freq="3243.61" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/outlandish">outlandish</a>	
+<div class="definition">conspicuously or grossly unconventional or unusual</div>
+<div class="example">Not everything in the show is 
+<strong>outlandish</strong>; some events are all too realistic.<a class="source" href="http://www.nytimes.com/2014/11/17/arts/katherine-heigl-stars-in-nbcs-state-of-affairs.html" rel="nofollow">New York Times <span class="date">(Nov 16, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry65"
+ lang="en" word="persistent" freq="343.48" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/persistent">persistent</a>	
+<div class="definition">stubbornly unyielding</div>
+<div class="example">It says, “together, if we face obstacles and counter the negative with a 
+<strong>persistent</strong> positive, we might just change the world.”<a class="source" href="http://blogs.seattletimes.com/take2/2014/12/01/a-seahawk-fan-on-why-hes-grateful-for-russell-wilson-with-a-capital-g/" rel="nofollow">Seattle Times <span class="date">(Dec 1, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry66"
+ lang="en" word="pertinent" freq="565.95" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/pertinent">pertinent</a>	
+<div class="definition">having precise or logical relevance to the matter at hand</div>
+<div class="example">You write about things that feel 
+<strong>pertinent</strong> and urgent to you, and that varies depending on what stage of life you are going through.&nbsp;<a class="source" href="http://www.msnbc.com/the-cycle/khaled-hosseini-answered-your-questions" rel="nofollow">MSNBC <span class="date">(Jul 11, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry67"
+ lang="en" word="plenteous" freq="5656.17" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/plenteous">plenteous</a>	
+<div class="definition">affording an abundant supply</div>
+<div class="example">"The harvest truly is 
+<strong>plenteous</strong>, but the labourers are few."<a class="source" href="http://www.gutenberg.org/ebooks/29343" rel="nofollow">Wilson, J. M. (James Maurice)</a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry68"
+ lang="en" word="potential" freq="190.01" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/potential">potential</a>	
+<div class="definition">existing in possibility</div>
+<div class="example">What 
+<strong>potential</strong> global threat should policymakers pay more attention to?<a class="source" href="http://www.usnews.com/opinion/articles/2014/12/11/america-is-off-duty-as-the-worlds-policeman" rel="nofollow">US News <span class="date">(Dec 11, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry69"
+ lang="en" word="precipice" freq="481.36" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/precipice">precipice</a>	
+<div class="definition">a very steep cliff</div>
+<div class="example">"Every minute of every day, we were on the 
+<strong>precipice</strong> of failure, which is an exciting place to be," Marsh says.<a class="source" href="http://www.latimes.com/entertainment/la-et-mn-en-theory-everything-20141125-story.html" rel="nofollow">Los Angeles Times <span class="date">(Nov 25, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry70"
+ lang="en" word="pristine" freq="4267.9" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/pristine">pristine</a>	
+<div class="definition">completely free from dirt or contamination</div>
+<div class="example">Back at the jail, Snow White is getting under Anna's skin a bit -- shaking her once 
+<strong>pristine</strong> view of the princess.<a class="source" href="http://www.latimes.com/entertainment/tv/showtracker/la-et-st-once-upon-a-time-heroes-and-villains-20141207-story.html" rel="nofollow">Los Angeles Times <span class="date">(Dec 8, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry71"
+ lang="en" word="quell" freq="1599.5" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/quell">quell</a>	
+<div class="definition">overcome or allay</div>
+<div class="example">The White House has tried to 
+<strong>quell</strong> anxieties about the danger of Ebola spreading in the United States.<a class="source" href="http://www.washingtonpost.com/national/state-quarantines-amid-ebola-threat-draw-criticism-as-governors-defend-actions/2014/10/26/00eff94c-5d22-11e4-8b9e-2ccdac31a031_story.html" rel="nofollow">Washington Post</a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry72"
+ lang="en" word="recluse" freq="2847.65" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/recluse">recluse</a>	
+<div class="definition">one who lives in solitude</div>
+<div class="example">Long before his days as the world’s most famous 
+<strong>recluse</strong>, Howard Hughes flew planes fast and far.<a class="source" href="http://cityroom.blogs.nytimes.com/2014/07/14/new-york-today-stormy-monday/" rel="nofollow">New York Times <span class="date">(Jul 14, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry73"
+ lang="en" word="recuperate" freq="3654.57" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/recuperate">recuperate</a>	
+<div class="definition">restore to good health or strength</div>
+<div class="example">Sleep is the time when your body 
+<strong>recuperates</strong> and rebuilds from the day’s stress.<a class="source" href="http://health.usnews.com/health-news/blogs/eat-run/2014/06/24/10-ways-to-get-more-sleep" rel="nofollow">US News <span class="date">(Jun 24, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry74"
+ lang="en" word="replenish" freq="1627.21" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/replenish">replenish</a>	
+<div class="definition">fill something that had previously been emptied</div>
+<div class="example">They bring in dredged sand to 
+<strong>replenish</strong> the beach.<a class="source" href="http://www.washingtonpost.com/news/storyline/wp/2014/12/02/the-old-man-and-the-rising-sea-2/" rel="nofollow">Washington Post</a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry75"
+ lang="en" word="repugnant" freq="1086.73" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/repugnant">repugnant</a>	
+<div class="definition">offensive to the mind</div>
+<div class="example">The truth is that we need only look at recent human history to find real, live, utterly 
+<strong>repugnant</strong> evil.<a class="source" href="http://www.salon.com/2014/09/04/10_of_the_most_evil_medical_experiments_in_history_partner/" rel="nofollow">Salon <span class="date">(Sep 4, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry76"
+ lang="en" word="restitution" freq="2257.02" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/restitution">restitution</a>	
+<div class="definition">a sum of money paid in compensation for loss or injury</div>
+<div class="example">While 
+<strong>restitution</strong> is paid to the victim, criminal fines and felony assessments are paid to a crime victims’ fund.<a class="source" href="http://www.washingtontimes.com/news/2014/nov/21/us-attorneys-office-in-hawaii-collects-65m/" rel="nofollow">Washington Times <span class="date">(Nov 21, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry77"
+ lang="en" word="sabotage" freq="3488.55" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/sabotage">sabotage</a>	
+<div class="definition">destroy property or hinder normal operations</div>
+<div class="example">“We want at least a district that won’t 
+<strong>sabotage</strong> the dreams of its youths.”<a class="source" href="http://www.latimes.com/local/lanow/la-me-ln-teachers-union-rally-20141121-story.html" rel="nofollow">Los Angeles Times <span class="date">(Nov 21, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry78"
+ lang="en" word="scarcity" freq="1411.59" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/scarcity">scarcity</a>	
+<div class="definition">a small and inadequate amount</div>
+<div class="example">Water—its 
+<strong>scarcity</strong>, quality and the regulations affecting it—is becoming a new corporate headache.<a class="source" href="http://www.economist.com/news/business/21631047-water-growing-business-problem-many-companies-havent-noticed-value-diluted" rel="nofollow">Economist <span class="date">(Nov 6, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry79"
+ lang="en" word="scurry" freq="1773.54" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/scurry">scurry</a>	
+<div class="definition">move about or proceed hurriedly</div>
+<div class="example">Ever wonder how cockroaches 
+<strong>scurry</strong> around in the dark while you fumble to switch on the kitchen light?<a class="source" href="http://news.sciencemag.org/biology/2014/12/video-how-roaches-see-pitch-black" rel="nofollow">Science Magazine <span class="date">(Dec 3, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry80"
+ lang="en" word="serenity" freq="1220.87" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/serenity">serenity</a>	
+<div class="definition">the absence of mental stress or anxiety</div>
+<div class="example">The surrounding waters and beautiful pools that surround the hotel create a real sense of calm and luxurious 
+<strong>serenity</strong>.<a class="source" href="http://www.forbes.com/sites/theoosborne/2014/07/25/the-top-8-luxury-hotels-in-north-india/" rel="nofollow">Forbes <span class="date">(Jul 25, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry81"
+ lang="en" word="sociable" freq="1476.57" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/sociable">sociable</a>	
+<div class="definition">friendly and pleasant</div>
+<div class="example">Running with others is really 
+<strong>sociable</strong> and great fun.<a class="source" href="http://www.bbc.co.uk/sport/0/get-inspired/26960363" rel="nofollow">BBC <span class="date">(Apr 10, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry82"
+ lang="en" word="somber" freq="1960.76" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/somber">somber</a>	
+<div class="definition">grave or even gloomy in character</div>
+<div class="example">It was also the day before one of the most 
+<strong>somber</strong> of American anniversaries: Pearl Harbor was bombed 73 years ago Sunday.<a class="source" href="http://www.washingtonpost.com/local/gloomy-rainy-day-halts-a-tree-lighting-in-alexandria-but-the-bagpipers-play-on/2014/12/06/e470e4e6-7dad-11e4-84d4-7c896b90abdc_story.html" rel="nofollow">Washington Post</a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry83"
+ lang="en" word="specimen" freq="195.18" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/specimen">specimen</a>	
+<div class="definition">an example regarded as typical of its class</div>
+<div class="example">The researchers detected it in older starfish samples, museum 
+<strong>specimens</strong> from as early as 1942.<a class="source" href="http://www.reuters.com/article/2014/11/17/us-science-starfish-idUSKCN0J129K20141117" rel="nofollow">Reuters <span class="date">(Nov 17, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry84"
+ lang="en" word="stamina" freq="5030.49" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/stamina">stamina</a>	
+<div class="definition">enduring strength and energy</div>
+<div class="example">A 6-year-old might not want to walk the mile into Petra, but teenagers have enough physical and intellectual 
+<strong>stamina</strong> to appreciate going to these places.­<a class="source" href="http://www.nytimes.com/2014/12/07/travel/showing-the-world-to-your-teenagers.html" rel="nofollow">New York Times <span class="date">(Dec 5, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry85"
+ lang="en" word="subside" freq="551.97" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/subside">subside</a>	
+<div class="definition">wear off or die down</div>
+<div class="example">The virus has a history of 
+<strong>subsiding</strong>, then flaring up again.<a class="source" href="http://www.washingtonpost.com/national/health-science/amber-vinson-dallas-nurse-leaving-hospital-after-ebola-cure/2014/10/28/d37e7fae-5e95-11e4-8b9e-2ccdac31a031_story.html" rel="nofollow">Washington Post</a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry86"
+ lang="en" word="swagger" freq="1422.44" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/swagger">swagger</a>	
+<div class="definition">a proud stiff pompous gait</div>
+<div class="example">The Giants had arrived here with the 
+<strong>swagger</strong> of a team that had won two of the last four World Series titles.<a class="source" href="http://www.nytimes.com/2014/10/04/sports/baseball/giants-beat-nationals-in-division-series-opener.html" rel="nofollow">New York Times <span class="date">(Oct 3, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry87"
+ lang="en" word="swarm" freq="342.29" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/swarm">swarm</a>	
+<div class="definition">move in large numbers</div>
+<div class="example">In “
+<strong>Swarm</strong>” mode, the robots instead follow one another, like children chasing a soccer ball.<a class="source" href="http://www.nytimes.com/2014/12/02/science/a-robot-exhibit-at-momath-aims-to-bring-math-to-life.html" rel="nofollow">New York Times <span class="date">(Dec 1, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry88"
+ lang="en" word="tactic" freq="387.01" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/tactic">tactic</a>	
+<div class="definition">a plan for attaining a particular goal</div>
+<div class="example">Technology has been used as a crime-fighting 
+<strong>tactic</strong>, but not as a tool to determine what happens during a police action.<a class="source" href="http://www.nytimes.com/2014/12/05/opinion/we-must-stop-police-abuse-of-black-men.html" rel="nofollow">New York Times <span class="date">(Dec 4, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry89"
+ lang="en" word="terse" freq="2187.33" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/terse">terse</a>	
+<div class="definition">brief and to the point</div>
+<div class="example">It’s a request to which Dipper responds, with 
+<strong>terse</strong> eloquence, “Weird.”<a class="source" href="http://www.nytimes.com/2014/11/22/theater/pitbulls-at-rattlestick-playwrights-theater.html" rel="nofollow">New York Times <span class="date">(Nov 21, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry90"
+ lang="en" word="translucent" freq="3602.25" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/translucent">translucent</a>	
+<div class="definition">allowing light to pass through diffusely</div>
+<div class="example">It comes in several colors, including attractive 
+<strong>translucent</strong> ones.<a class="source" href="http://www.washingtontimes.com/news/2014/jul/30/review-3doodler-is-fun-but-quirky-3-d-pen/" rel="nofollow">Washington Times <span class="date">(Jul 30, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry91"
+ lang="en" word="uncanny" freq="1466.32" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/uncanny">uncanny</a>	
+<div class="definition">surpassing the ordinary or normal</div>
+<div class="example">The Dark Sky App tells you the weather where you are with an 
+<strong>uncanny</strong> accuracy.&nbsp;<a class="source" href="http://www.forbes.com/sites/groupthink/2014/06/26/world-cup-wisdom-to-start-a-business-think-like-a-goalie/" rel="nofollow">Forbes <span class="date">(Jun 26, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry92"
+ lang="en" word="unsightly" freq="4220.68" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/unsightly">unsightly</a>	
+<div class="definition">unpleasant to look at</div>
+<div class="example">But that’s just a quibble, an 
+<strong>unsightly</strong> pimple on what is a greater problem.<a class="source" href="http://www.theguardian.com/science/blog/2014/oct/14/brian-coxs-human-universe-presents-a-fatally-flawed-view-of-evolution" rel="nofollow">The Guardian <span class="date">(Oct 14, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry93"
+ lang="en" word="versatile" freq="1664.75" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/versatile">versatile</a>	
+<div class="definition">able to move freely in all directions</div>
+<div class="example">Eggs are among the most 
+<strong>versatile</strong> foods and the proteins change when you heat them, beat them or mix them with other ingredients.<a class="source" href="http://www.usnews.com/news/stem-solutions/articles/2014/12/10/op-ed-the-holidays-can-become-a-lesson-in-rocket-science" rel="nofollow">US News <span class="date">(Dec 10, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry94"
+ lang="en" word="vigilant" freq="593.83" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/vigilant">vigilant</a>	
+<div class="definition">carefully observant or attentive</div>
+<div class="example">Because there are so many scammers out there, banks are 
+<strong>vigilant</strong> about verifying that you are who you say you are.<a class="source" href="http://www.washingtonpost.com/local/i-thought-i-was-getting-the-runaround-from-my-bank-the-truth-was-somewhat-different/2014/12/07/ebb527d0-7d80-11e4-b821-503cc7efed9e_story.html" rel="nofollow">Washington Post</a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry95"
+ lang="en" word="vulnerable" freq="685.27" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/vulnerable">vulnerable</a>	
+<div class="definition">capable of being wounded or hurt</div>
+<div class="example">Second, older cells are more 
+<strong>vulnerable</strong> to this damage—or less able to repair themselves.<a class="source" href="http://www.scientificamerican.com/article/never-too-old-to-fight-cancer/" rel="nofollow">Scientific American <span class="date">(Dec 9, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry96"
+ lang="en" word="waft" freq="1307.87" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/waft">waft</a>	
+<div class="definition">be driven or carried along, as by the air</div>
+<div class="example">The birds were chirping, and a warm breeze 
+<strong>wafted</strong> through the screens.<a class="source" href="http://www.washingtonpost.com/lifestyle/magazine/2014/03/20/05fdac4e-f1a3-11e3-bf76-447a5df6411f_story.html" rel="nofollow">Washington Post</a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry97"
+ lang="en" word="waver" freq="500.84" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/waver">waver</a>	
+<div class="definition">pause or hold back in uncertainty or unwillingness</div>
+<div class="example">He is tough as nails, never 
+<strong>wavers</strong>, speaks the truth and stays focused.<a class="source" href="http://www.nytimes.com/2014/10/13/sports/football/giants-momentum-crashes-in-blowout-loss-to-eagles.html" rel="nofollow">New York Times <span class="date">(Oct 13, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry98"
+ lang="en" word="weather" freq="81.67" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/weather">weather</a>	
+<div class="definition">face and withstand with courage</div>
+<div class="example">You even get subjected to ridicule, and you have to 
+<strong>weather</strong> that storm.<a class="source" href="http://www.latimes.com/entertainment/movies/moviesnow/la-et-mn-sag-awards-2015-ethan-hawke-boyhood-reaction-20141210-story.html" rel="nofollow">Los Angeles Times <span class="date">(Dec 10, 2014)</span></a></div>
+
+
+</li>
+
+
+
+
+
+
+<li class="entry learnable" id="entry99"
+ lang="en" word="zeal" freq="202.16" prog="0">
+ 
+<a class="word dynamictext" href="/dictionary/zeal">zeal</a>	
+<div class="definition">a feeling of strong eagerness</div>
+<div class="example">The enthusiasm has caught on among his regulars, who come often, linger and talk about pumpkins with the 
+<strong>zeal</strong> of converts.<a class="source" href="http://www.washingtonpost.com/lifestyle/food/a-pumpkin-patchs-careful--and-passionate--cultivator/2014/10/27/10e70e5c-5b93-11e4-b812-38518ae74c67_story.html" rel="nofollow">Washington Post</a></div>
+
+
+</li>
+
+
+	</ol>	
+	</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<section class="signup-tout center clearfloat sectionbg">
+<div class="limited-width ">
+	<h2>Sign up, it's free!</h2>
+	<div class="margin2 margin2r col8" >
+		<p>
+		Whether you're a student, an educator, or a life-long learner, Vocabulary.com can put you
+		on the path to systematic vocabulary improvement. <br>
+		</p>
+		
+		<a role="button" class="signup button green" href="/signup/">Get Started</a>
+		
+	</div>
+</div>
+</section>
+
+
+<footer class="page-footer">
+<nav class="sitelinks limited-width hide-mobile clearfloat screen-only">
+	<div class="col2 ">
+			<h3>For Everyone</h3>
+			<ul>
+			<li><a href="/play/">Play the Challenge</a></li>
+			<li><a href="/lists/">Vocabulary Lists</a></li>
+			<li><a href="/dictionary/">Dictionary</a></li>				
+			<li><a href="/articles/chooseyourwords/">Choose Your Words</a></li>			
+			</ul>				
+		</div>
+			
+		<div class="col2 ">
+			<h3><a href="/educator-edition/">For Educators</a></h3>
+			<ul>
+			<li><a href="/educator-edition/">Educator Edition</a></li>		
+			<li><a href="/educator-edition/pricing/">Plans &amp; Pricing</a></li>
+			<li><a href="/educator-edition/sales/">Contact Sales</a></li>
+			<li><a href="/articles/success-stories/">Success Stories</a></li>
+			</ul>				
+		</div>
+		
+		<div class="col2 ">
+			<h3><a href="/help/">Help</a></h3>
+			<ul>
+			<li><a href="/help/">Help Articles / FAQ</a></li>			
+			<!--  <li><a href="/help/videos/">How-to Videos</a></li>-->
+			<li><a href="/help/webinars">Training &amp; Webinars</a></li>	
+			<li><a href="/help/contactus">Contact Support</a></li>
+			<li><a>&nbsp;</a></li>	
+			</ul>				
+		</div>
+					
+		<div class="col2 ">
+			<h3><a href="/leaderboards/">Leaderboards</a></h3>
+			<ul>
+			<li><a href="/bowl/">Vocabulary Bowl</a></li>	
+			<li><a href="/leaderboards/bowl/">Bowl Leaders</a></li>					
+			<li><a href="/leaderboards/today/">Today's Leaders</a></li>
+			<li><a href="/leaderboards/thisweek/">Weekly Leaders</a></li>
+			<li><a href="/leaderboards/thismonth/">Monthly Leaders</a></li>						
+			</ul>						
+		</div>	
+				
+		<div class="col2 ">
+			<h3><a href="/blog/">Connect</a></h3>
+			<ul>
+			<li><a href="/blog/">Vocabulary.com Blog</a></li>
+			<li><a href="https://twitter.com/VocabularyCom">Twitter</a></li>
+			<li><a href="https://www.facebook.com/vocabularycom">Facebook</a></li>
+			
+			</ul>				
+		</div>
+		
+		<div class="col2 ">
+			<h3><a href="/about/">Our Story</a></h3>
+			<ul>
+			<li><a href="/about/">Our Mission</a></li>
+			<li><a href="/about/team/">Team / Jobs</a></li>
+			<li><a href="/about/news/">News &amp; Events</a></li>				
+			<li><a href="/about/partnerships/">Partnerships</a></li>	
+			</ul>				
+		</div>
+
+</nav>
+<nav class="legal limited-width clearfloat">
+		<a href="/terms/">&copy; Vocabulary.com</a>
+		<a href="/terms/" class="screen-only">Terms of Use</a>
+		<a href="/privacy/" class="screen-only">Privacy Policy</a>
+</nav></footer>
+
+<nav class="sitemap screen-only">
+<div class="scrollable">
+<div>
+	<div class="limited-width mobile-5050 pad2y">
+	
+	<div class="col9">
+		<div class="col4 pad1x">
+			<h3>For Everyone</h3>
+			<ul>
+			<li><a href="/play/">Play the Challenge</a></li>
+			<li><a href="/lists/">Vocabulary Lists</a></li>
+			<li><a href="/dictionary/">Dictionary</a></li>				
+			<li><a href="/articles/chooseyourwords/">Choose Your Words</a></li>			
+			</ul>				
+		</div>
+			
+		<div class="col4 pad1x">
+			<h3><a href="/educator-edition/">For Educators</a></h3>
+			<ul>
+			<li><a href="/educator-edition/">Educator Edition</a></li>		
+			<li><a href="/educator-edition/pricing/">Plans &amp; Pricing</a></li>
+			<li><a href="/educator-edition/sales/">Contact Sales</a></li>
+			<li><a href="/articles/success-stories/">Success Stories</a></li> 
+			</ul>				
+		</div>
+		
+		<div class="col4 pad1x">
+			<h3><a href="/help/">Help</a></h3>
+			<ul>
+			<li><a href="/help/">Help Articles / FAQ</a></li>			
+			<!--<li><a href="/help/videos/">How-to Videos</a></li>-->
+			<li><a href="/help/webinars">Training &amp; Webinars</a></li>	
+			<li><a href="/help/contactus">Contact Support</a></li>	
+			<li><a>&nbsp;</a></li>	
+			</ul>				
+		</div>
+					
+		<div class="col4 pad1x">
+			<h3><a href="/leaderboards/">Leaderboards</a></h3>
+			<ul>
+			<li><a href="/bowl/">Vocabulary Bowl</a></li>	
+			<li><a href="/leaderboards/bowl/">Bowl Leaders</a></li>		
+			<li><a href="/leaderboards/today/">Today's Leaders</a></li>
+			<li><a href="/leaderboards/thisweek/">Weekly Leaders</a></li>
+			<li><a href="/leaderboards/thismonth/">Monthly Leaders</a></li>						
+			</ul>						
+		</div>	
+		
+		
+
+		<div class="col4 pad1x">
+			<h3><a href="/blog/">Connect</a></h3>
+			<ul>
+			<li><a href="/blog/">Vocabulary.com Blog</a></li>
+			<li><a href="https://twitter.com/VocabularyCom">Twitter</a></li>
+			<li><a href="https://www.facebook.com/vocabularycom">Facebook</a></li>
+			
+			</ul>				
+		</div>
+		
+		<div class="col4 pad1x">
+			<h3><a href="/about/">Our Story</a></h3>
+			<ul>
+			<li><a href="/about/">Our Mission</a></li>
+			<li><a href="/about/team/">Team / Jobs</a></li>
+			<li><a href="/about/news/">News &amp; Events</a></li>				
+			<li><a href="/about/partnerships/">Partnerships</a></li>	
+			</ul>				
+		</div>
+	</div>
+	<div class="col3 pad1x">
+		<h3><a href="/account/">My Account</a></h3>
+		<div class="loggedout-only clearfloat signinoptions">
+			<a role="button" class="google button" href="/login/google">Sign in with Google</a>			
+			<a role="button" class="facebook button" href="/login/facebook">Sign in with Facebook</a>	
+			<p>or, <a href="/login/">sign in with email.</a></p>
+			<p>Don't have an account yet?<br>
+			   <a href="/signup">Sign up. It's free and takes five seconds.</a>
+			</p>							
+		</div>
+		<ul class="loggedin-only">
+			<li><a href="/auth/logout"><i class="ss-logout"></i>Log Out</a></li>
+			<li class="nav-assignments with-assignments-only"><a href="/account/assignments"><i class="ss-attach"></i>My Assignments</a></li>
+			<li><a href="/progress/"><i class="ss-barchart"></i>My Progress</a>
+				<ul>
+					<li><a href="/account/progress/words/learning"><i class="ss-hiker ss-symbolicons-block"></i>Words I'm Learning</a></li>
+					<li><a href="/account/progress/words/trouble"><i class="ss-bullseye ss-symbolicons-block"></i>My Trouble Words</a></li>
+					<li><a href="/account/progress/words/mastered"><i class="ss-check ss-symbolicons-block"></i>Words I've Mastered</a></li>
+					<li><a href="/account/progress/achievements"><i class="ss-award ss-symbolicons-block"></i>My Achievements</a></li>
+				</ul>
+			</li>	
+			<li ><a href="/account/lists/"><i class="ss-list"></i>My Lists</a>
+			<ul>
+				<li><a href="/lists/"><i class="ss-search"></i>Find a List to Learn...</a></li>
+				<li><a href="/lists/new"><i class="ss-hospital ss-symbolicons-block"></i>Create a New List...</a></li>
+			</ul>
+			</li>
+			
+			<li class="nav-classes perms-create-class-only"><a href="/account/classes"><i class="ss-users"></i>My Classes</a></li>
+						
+			<li class="perms-school-reports-only"><a href="/account/schools"><i class="ss-school ss-symbolicons-block"></i>Schools &amp; Teachers</a></li>
+			
+			<li class="perms-user-admin-only"><a href="/account/users"><i class="ss-usergroup ss-symbolicons-block "></i>User Administration</a></li>
+			<li class="perms-auth-admin-only"><a href="/account/authentication"><i class="ss-key"></i>User Authentication</a></li>
+			<li>
+				<a href="/account/"><i class="ss-settings"></i>My Account</a>			
+			</li>
+		</ul>
+	</div>
+	</div>		
+	<div class="copyright pad2y">				
+		<div class="limited-width">
+		<span>&copy; Vocabulary.com</span>			
+		<div class="terms">
+		<a href="/terms/">Terms of Use</a>
+		<a href="/privacy/">Privacy Policy</a>
+		</div>
+		</div>
+	</div>	
+</div></div>
+<div class="nub"></div>				
+</nav>
+</div>
+
+</body>
+
+</html>

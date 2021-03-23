@@ -16,6 +16,21 @@ function currencyFormat(s, delemiter) {
     return hijackValue;
 }
 
+function isValidStroke(e) {
+    if (e.ctrlKey && /[vcxr]/i.test(e.key)) {
+        return true;
+    }
+    if (/([0-9]|Backspace|Arrow\w+|Delete|End|Home|Tab|Enter|Shift)/.test(e.key)) {
+        return true;
+    }
+    return false;
+}
+
+function log(msg) {
+    var el = document.getElementById("console");
+    el.innerHTML = msg + "\n" + el.innerHTML;
+}
+
 function mountOn(el, options) {
     var delemiter = options.delemiter || "";
     var suffix = options.suffix || "";
@@ -26,11 +41,16 @@ function mountOn(el, options) {
     el.type = "text";
     el.value = prefix + pastValue + suffix;
 
-    el.addEventListener("input", function(){
-        var caretPos = this.selectionStart;
+    function hijack() {
+        log(": hijack start :");
+        log("past value: " + pastValue);
+        var caretPos = el.selectionStart;
+        log("current caretPos: " + caretPos);
         var currentValue = el.value;
+        log("current value: " + currentValue);
         function delegateErasing() {
             if (currentValue.length == pastValue.length - 1 && pastValue[caretPos] == delemiter) {
+                log("delegate erase: " + (reverseErase ? -1 : 1));
                 if (reverseErase) {
                     return eraseAt(currentValue, caretPos);
                 } else {
@@ -44,9 +64,11 @@ function mountOn(el, options) {
         hijackValue = hijackValue.replace(/[^0-9]/g, "");
         hijackValue = hijackValue.replace(/\B(?=(?:\d{3})+(?!\d))/g, delemiter);
         el.value = hijackValue;
+        log("new value: " + hijackValue);
         function resetCaretPosition() {
             var i, preCaretCount = 0;
             if (caretPos == currentValue.length) {
+                log("skip reset caret");
                 return;
             }
             for (i = 0; i < caretPos; i++) {
@@ -59,30 +81,47 @@ function mountOn(el, options) {
                     preCaretCount--;
                 }
             }
+            if (hijackValue[i] == delemiter) i++;
+            log("reset caret to " + i);
             el.selectionStart = i;
             el.selectionEnd = i;
         }
         resetCaretPosition();
         pastValue = hijackValue;
+        log(": hijack end :");
+    }
+
+    var clipboardCallback = function() { setTimeout(hijack, 0); }
+    el.addEventListener("cut", clipboardCallback);
+    el.addEventListener("paste", clipboardCallback)
+    el.addEventListener("keyup", function(e){
+        var ignore = true;
+        if (/([0-9]|Backspace|Delete)/.test(e.key)) {
+            ignore = false;
+        }
+        if (ignore) {
+            log("ignore keyup: " + e.key);
+            return;
+        }
+        hijack();
     });
     el.addEventListener("keydown", function(e){
         reverseErase = e.key == "Delete";
-        if (e.ctrlKey && /[vcxr]/i.test(e.key)) {
-            return;
+        if ( ! isValidStroke(e)) {
+            log("prevent keydown: " + e.key);
+            e.preventDefault();
         }
-        if (/([0-9]|Backspace|Arrow\w+|Delete|End|Home|Tab|Enter)/.test(e.key)) {
-            return;
-        }
-        e.preventDefault();
     });
     el.addEventListener("focus", function(){
         var val = el.value;
         if (val) {
+            log("detach suffix");
             el.value = val.substring(prefix.length, val.length - suffix.length);
         }
     });
     el.addEventListener("blur", function(){
         if (el.value) {
+            log("attach suffix");
             el.value = prefix + el.value + suffix;
         }
     });
@@ -93,7 +132,7 @@ window.onload = function() {
     var options = {
         delemiter: "'",
         suffix: " CHF",
-        initialValue: 1000000
+        initialValue: 1234567
     };
     mountOn(el, options);
     el.focus(); // FIXME development convenience

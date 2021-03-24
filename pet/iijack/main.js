@@ -37,11 +37,17 @@ function mountOn(el, options) {
     var prefix = options.prefix || "";
     var pastValue = currencyFormat(options.initialValue, delemiter);
     var reverseErase = false;
+    var busy = false;
 
     el.type = "text";
     el.value = prefix + pastValue + suffix;
 
     function hijack() {
+        if (busy) {
+            log("busy ...");
+            return;
+        }
+        busy = true;
         log(": hijack start :");
         log("past value: " + pastValue);
         var caretPos = el.selectionStart;
@@ -89,17 +95,11 @@ function mountOn(el, options) {
         resetCaretPosition();
         pastValue = hijackValue;
         log(": hijack end :");
+        setTimeout(function() { busy = false; }, 0);
     }
 
     el.addEventListener("input", function(e){
         hijack();
-    });
-    el.addEventListener("keydown", function(e){
-        reverseErase = e.key == "Delete";
-        if ( ! isValidStroke(e)) {
-            log("prevent keydown: " + e.key);
-            e.preventDefault();
-        }
     });
     el.addEventListener("focus", function(){
         var val = el.value;

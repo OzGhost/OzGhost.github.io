@@ -91,18 +91,7 @@ function mountOn(el, options) {
         log(": hijack end :");
     }
 
-    var clipboardCallback = function() { setTimeout(hijack, 0); }
-    el.addEventListener("cut", clipboardCallback);
-    el.addEventListener("paste", clipboardCallback)
-    el.addEventListener("keyup", function(e){
-        var ignore = true;
-        if (/([0-9]|Backspace|Delete)/.test(e.key)) {
-            ignore = false;
-        }
-        if (ignore) {
-            log("ignore keyup: " + e.key);
-            return;
-        }
+    el.addEventListener("input", function(e){
         hijack();
     });
     el.addEventListener("keydown", function(e){

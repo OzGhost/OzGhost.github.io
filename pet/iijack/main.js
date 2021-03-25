@@ -1,21 +1,4 @@
 
-function eraseAt(s, i) {
-    if (i < 0 || i >= s.length) return s;
-    if (i == 0) {
-        return s.substring(1);
-    }
-    if (i == s.length - 1) {
-        return s.substring(0, s.length - 1);
-    }
-    return s.substring(0, i) + s.substring(i+1);
-}
-
-function currencyFormat(s, delemiter) {
-    var hijackValue = (""+s).replace(/[^0-9]/g, "");
-    hijackValue = hijackValue.replace(/\B(?=(?:\d{3})+(?!\d))/g, delemiter);
-    return hijackValue;
-}
-
 function isValidStroke(e) {
     if (e.ctrlKey && /[vcxr]/i.test(e.key)) {
         return true;
@@ -34,40 +17,25 @@ function log(msg) {
 function mountOn(el, options) {
     var delemiter = options.delemiter || "";
     var suffix = options.suffix || "";
-    var prefix = options.prefix || "";
-    var pastValue = currencyFormat(options.initialValue, delemiter);
-    var reverseErase = false;
-    var busy = false;
+    var reverseErasing = false;
+    var rawValue = 0;
+
+    function currencyFormat(s, delemiter) {
+        var rawValue = (""+s).replace(/[^0-9]/g, "");
+        hijackValue = rawValue.replace(/\B(?=(?:\d{3})+(?!\d))/g, delemiter);
+        return hijackValue;
+    }
 
     el.type = "text";
-    el.value = prefix + pastValue + suffix;
+    el.value = currencyFormat(options.initialValue, delemiter) + suffix;
 
     function hijack() {
-        if (busy) {
-            log("busy ...");
-            return;
-        }
-        busy = true;
         log(": hijack start :");
-        log("past value: " + pastValue);
         var caretPos = el.selectionStart;
         log("current caretPos: " + caretPos);
         var currentValue = el.value;
         log("current value: " + currentValue);
-        function delegateErasing() {
-            if (currentValue.length == pastValue.length - 1 && pastValue[caretPos] == delemiter) {
-                log("delegate erase: " + (reverseErase ? -1 : 1));
-                if (reverseErase) {
-                    return eraseAt(currentValue, caretPos);
-                } else {
-                    caretPos--;
-                    return eraseAt(currentValue, caretPos);
-                }
-            }
-            return currentValue;
-        }
-        var hijackValue = delegateErasing();
-        hijackValue = hijackValue.replace(/[^0-9]/g, "");
+        var hijackValue = currentValue.replace(/[^0-9]/g, "");
         hijackValue = hijackValue.replace(/\B(?=(?:\d{3})+(?!\d))/g, delemiter);
         el.value = hijackValue;
         log("new value: " + hijackValue);
@@ -87,31 +55,32 @@ function mountOn(el, options) {
                     preCaretCount--;
                 }
             }
-            if (hijackValue[i] == delemiter) i++;
+            if (reverseErasing && hijackValue[i] == delemiter) i++;
             log("reset caret to " + i);
             el.selectionStart = i;
             el.selectionEnd = i;
         }
         resetCaretPosition();
-        pastValue = hijackValue;
         log(": hijack end :");
-        setTimeout(function() { busy = false; }, 0);
     }
 
     el.addEventListener("input", function(e){
         hijack();
     });
+    el.addEventListener("keydown", function(e){
+        reverseErasing = e.key == "Delete";
+    });
     el.addEventListener("focus", function(){
         var val = el.value;
         if (val) {
             log("detach suffix");
-            el.value = val.substring(prefix.length, val.length - suffix.length);
+            el.value = val.substring(0, val.length - suffix.length);
         }
     });
     el.addEventListener("blur", function(){
         if (el.value) {
             log("attach suffix");
-            el.value = prefix + el.value + suffix;
+            el.value = el.value + suffix;
         }
     });
 }

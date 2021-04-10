@@ -24,8 +24,32 @@ public class JsonValidatorTest {
 
     @Test
     public void test_suit_01() throws Exception {
-        JsonNode frame = mapper.readTree(new File(RP + "suit_frame_01.txt"));
-        JsonNode subject = mapper.readTree(new File(RP + "suit_subject_01.txt"));
+        run_suit("01");
+    }
+
+    @Test
+    public void test_suit_02() throws Exception {
+        run_suit("02");
+    }
+
+    @Test
+    public void test_suit_03() throws Exception {
+        run_suit("03");
+    }
+
+    @Test
+    public void test_suit_04() throws Exception {
+        run_suit("04");
+    }
+
+    @Test
+    public void test_suit_05() throws Exception {
+        run_suit("05");
+    }
+
+    private void run_suit(String sn) throws Exception {
+        JsonNode frame = mapper.readTree(new File(RP + "suit_frame_"+sn+".txt"));
+        JsonNode subject = mapper.readTree(new File(RP + "suit_subject_"+sn+".txt"));
         List<Entry<String, String>> vios = JsonValidator.from(frame).examine(subject);
         List<String> flatVios = new ArrayList<>(vios.size());
         for (Entry<String, String> e: vios) {
@@ -34,7 +58,7 @@ public class JsonValidatorTest {
         String[] rawVios = flatVios.toArray(new String[flatVios.size()]);
         Arrays.sort(rawVios);
         List<String> exp = null;
-        try (BufferedReader br = new BufferedReader(new FileReader(new File(RP + "suit_output_01.txt")))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(new File(RP + "suit_output_"+sn+".txt")))) {
             exp = br.lines().collect(Collectors.toList());
         }
         String[] rawExp = exp.toArray(new String[exp.size()]);
@@ -55,12 +79,12 @@ public class JsonValidatorTest {
         }
         if (fall) {
             msg.append("\n>> Expected: \n");
-            for (int i = 0; i < rawVios.length; i++) {
-                msg.append(i).append(". ").append(rawExp[i]).append('\n');
+            for (int i = 0; i < rawExp.length; i++) {
+                msg.append('#').append(i).append(": ").append(rawExp[i]).append('\n');
             }
             msg.append(">> But was: \n");
             for (int i = 0; i < rawVios.length; i++) {
-                msg.append(i).append(". ").append(rawVios[i]).append('\n');
+                msg.append('#').append(i).append(": ").append(rawVios[i]).append('\n');
             }
             throw new Exception(msg.toString());
         }

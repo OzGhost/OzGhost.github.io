@@ -2,6 +2,7 @@ package ruf.jvali;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import java.util.List;
+import java.util.LinkedList;
 import java.util.Map.Entry;
 
 public class JsonValidator {
@@ -17,7 +18,7 @@ public class JsonValidator {
     }
 
     public List<Entry<String, String>> examine(JsonNode subject) {
-        return null;
+        return new LinkedList<>();
     }
 }
 

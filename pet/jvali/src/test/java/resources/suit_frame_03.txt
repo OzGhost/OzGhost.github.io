@@ -1,6 +1,6 @@
 {
     "a": {
         "_r": 1,
-        "notNull": true
+        "oneOf": "DOG|CAT"
     }
 }

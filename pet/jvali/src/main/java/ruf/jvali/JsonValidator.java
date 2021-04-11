@@ -16,6 +16,7 @@ public class JsonValidator {
 
     private static final String RI = "_r";
     private static final String DL = ".";
+    private static final String ROOT = "_";
     private static final Map<String, Consumer<CheckPoint>> VALIDICT = new HashMap<>();
     private JsonNode frame;
     
@@ -30,7 +31,7 @@ public class JsonValidator {
     public List<Entry<String, String>> examine(JsonNode subject) {
         List<Entry<String, String>> vios = new LinkedList<>();
         Consumer<Entry<String, String>> vioPit = e -> vios.add(e);
-        examine(subject, frame, vioPit, "_");
+        examine(subject, frame, vioPit, ROOT);
         return vios;
     }
 

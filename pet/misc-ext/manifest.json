@@ -1,0 +1,20 @@
+{
+    "name": "Misc Ext",
+    "description": "Collection of tiny homemade extension for a bunch of site.",
+    "version": "1.0",
+    "manifest_version": 3,
+    "content_scripts": [
+        {
+            "matches": ["*://*/*"],
+            "css": [
+                "anchor.css",
+                "ggax.css"
+            ],
+            "js": [
+                "anchor.js",
+                "ggax.js"
+            ],
+            "run_at": "document_end"
+        }
+    ]
+}

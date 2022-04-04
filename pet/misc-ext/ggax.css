@@ -1,0 +1,10 @@
+
+#mx-ggax {
+    position: fixed;
+    top: 64px;
+    left: 64px;
+    z-index: 800;
+    border: 6px solid crimson;
+    max-width: 80vw;
+}
+

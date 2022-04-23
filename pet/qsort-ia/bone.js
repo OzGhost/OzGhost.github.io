@@ -1,12 +1,15 @@
 
 (function(){
+    var screen = document.getElementById("screen");
+    var w = getComputedStyle(screen).getPropertyValue("width");
+    var n = Math.floor(Number.parseInt(w) / 8) - 2;
+    console.log("n = ", n, " on w = ", w);
     var next = [];
-    for (var k = 0; k < 99; k++) {
+    for (var k = 0; k < n; k++) {
         next[k] = Math.round(Math.random() * 200);
     }
     var inp = next;
     var roof = findRoof(inp);
-    var screen = document.getElementById("screen");
     var rest = 50;
     function findRoof(inp) {
         var max = inp[0];
@@ -51,6 +54,7 @@
                 for (var j = l; j < h; j++) {
                     if (arr[j].val < p) {
                         i++;
+                        if (i == j) continue;
                         (function(){
                             var x = i;
                             var y = j;

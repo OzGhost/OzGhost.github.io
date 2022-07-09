@@ -4,7 +4,7 @@ for (var i = 0; i < 4; i++) {
 }
 
 window.onload = function(){
-    var arr = ['a','x','c','i','k'];
+    var arr = gen(5);
     var rig = rigIt(arr);
     console.log(rig);
     function rigIt(arr) {
@@ -30,6 +30,18 @@ window.onload = function(){
                 r[j].push(arr[idx]);
                 out.push(r[j]);
             }
+        }
+        return out;
+    }
+    function gen(size) {
+        var out = [];
+        for (var i = 0; i < size; i++) {
+            var p = {
+                name: "p" + i,
+                price: Math.floor(Math.random() * 1000),
+                amount: Math.floor(Math.random() * 99) + 1
+            };
+            out.push(p);
         }
         return out;
     }

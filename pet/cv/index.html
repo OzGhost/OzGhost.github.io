@@ -3,123 +3,62 @@
   <head>
     <meta charset="utf8">
     <title>Curriculum Vitae</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro"
-          rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Cantarell" rel="stylesheet">
-    <link href="https://meyerweb.com/eric/tools/css/reset/reset.css"
-          type="text/css" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css" type="text/css">
   </head>
   <body>
     <div class="a4paper" id="print-area">
-
-      <div class="main-cage">
-        <div class="intro">
-          <h3>Introduce</h3>
-            Hi, I'm Duc, an ordinary guy with an ordinary life. I code for fun but
-            when coding become not fun I watch anime, which was dubed in English,
-            to have fun instead. <br/>
-            I read programmming books sometimes, try to build up
-            the knowledge of mine.
-            Then find the way to apply them into my code. <br/>
-            I quite interest about performance and try my best to make everything
-            go as fast as possible while still keep it clear enough to understand.
+        <div class="cg">
+            <img src="res/avatar_shrinked.png" />
+            <h3>Short</h3>
+            I have been using Linux for years therefore I am able to operate at full power with it.<br/>
+            By any chance that I have to work on Windows or MacOS then you can expect to lose about 40% of my strength and speed.<br/>
+            I can work well in both English and Vietnamese but prefer English environment.<br/>
+            In my point of view, work is where the fun come from so please don't make my work become too messy.
         </div>
-        <div class="experience">
-          <h3>Experiences</h3>
-          <div class="ex-detail">
-            <big>
-              <span class="fas fa-angle-double-right"></span>
-              Internship at <b>Global CyberSoft</b>
-            </big><i>about five month</i><br/>
-            <small> as a Back-end Developer </small>
-            <blockquote>
-              I was joined in a maintainent team.
-              We maintain a production project which was started
-              around two year ago.<br/>
-              We use Spring (Java framework),
-              Hibernate, Maven for our micro-service. Communicating between those
-              micro-service by RESTFul standard.<br/>
-              My team use Scrum to help every member keep
-              track of the project state.<br/>
-              My role is a back-end web service.
-              My main task is fix bugs and update features.
-              I used to improve some query to speed it up,
-              create some new feature follow team leader's guide,
-              make some change on some api to keep it
-              suite with the change of feature.
-            </blockquote>
-          </div>
-          <div class="ex-detail">
-            <big>
-              <span class="fas fa-angle-double-right"></span>
-              Remote working for an online shop
-            </big><i>about two month</i><br/>
-            <small> as a Fullstack Developer </small>
-            <blockquote>
-              The shop owner would like to swith from CodeIgniter to Wordpress
-              but need the data still unchanged. Then I make it happend as he wish.
-              <br/>
-              Reface admin page based on the given design.
-            </blockquote>
-          </div>
-          <div class="ex-detail">
-            <big>
-              <span class="fas fa-angle-double-right"></span>
-              Fulltime at <b>Axon Active Viet Nam</b>
-            </big><i>about a year</i><br/>
-            <small> as a Software Developer </small>
-            <blockquote>
-              Working among a production team which cooperate with several team
-              on a finance project.<br/>
-              Work with Ivy, Primefaces and Java.<br/>
-              Gained Scrum cetificate.<br/>
-              Solved two performance issue in project.
-              One is optimize SQL queries and
-              the other is apply caching to save execution time.<br/>
-              Designed an auto initial database schema and content tool
-              (support multiple kind of relational database management system
-              such as: Oracle, PostgreSQL, MySQL, ...)
-              with an auto upgrade database tool (support database content change).
-              <br/>
-              Designed and built a tool that create and dummy data into object
-              by object's class using reflection to support initial input data
-              for unit test.
-            </blockquote>
-          </div>
+        <div class="cg">
+            <h3>Experiences</h3>
+            <h5>Axon Active Vietnam [ April 2018 - June 2022 ]</h5>
+            First project is an application which shorten the manual calculate intererate process.
+            I started by design the database to fit new requirement then implement features on both back-end and front-end.
+            Designed and implemented feature to initialize the database for first-time-installation of the application.
+            After a year, the project merged into a bigger one which use the same stack but cover more business.
+            I was assigned to more interesting topics and give it my best for new feature to come and serve.
+            <br/> * Stack: Ivy Designer, JSF, Primefaces, Hibernates, Oracle, PostgreSQL, JavaScript, Scss, Elastich search<br/><br/>
+            Recently, my team was assigned on new project which work on a whole new stack and lead by a powerful guy from Switzerland.
+            I designed and built services which have simple and clear structure which highly secured. The infrastructure was design so that it ready to scale up.
+            The UI which designed by other team and got customer approval on prototype - will be implement by our team.
+            The UI support two famous browser which is Firefox and Chrome. The responsive layout can display well on many devices.
+            Asynchronous was taking care mostly by me, reaction time of the page was keep down to minimal.
+            <br/> * Stack: Kubenetes, Docker, Quarkus, Hibernate, PostgreSQL, Liquibase, Open API, PlantUML, Microservice, Rest API, NuxtJs, VueJs, Static site generation, Scss
+            <h5>Local Branch Online Shop [ January 2018 - March 2018 ]</h5>
+            I got a job from a graduated student of the school who own a small company at that point.
+            First task I needed to take care is to bring the whole website from CodeIgniter to Wordpress. The task done well.
+            After that, I help create an admin page which replicate a page from internet (the original page use Angular) by plain JavaScript, CSS and so on.
+            <br/> * Stack: PHP, Wordpress, MySQL, JavaScript, Css
+            <h5>Global CyberSoft [ September 2016 - March 2017 ]</h5>
+            I started as an Intern developer. Working mostly with back-end rest services. The project is about an IOT system for agriculture automation.
+            The service will feed data for front-end which handled by another team's member. I at first was assigned to analyze the database structure to see
+            if it possible to improve anything. Later on, I help re-write an query on huge table which take minutes to complete down to seconds.
+            After that, I got chance to design and implement the feature to export a report which have graph and stuff as an excel file.
+            <br/> * Stack: Java Spring, PostgeSQL, Hibernate
         </div>
-      </div><!-- main-cage -->
-
-      <div class="sub-cage">
-        <div class="info">
-          <img src="res/avatar.png">
-          <h2>Nguyen Hoang Duc</h2>
-          <p class="phone">
-            +84 964 733 088
-          </p>
-          <p class="email">
-            14520183@gm.uit.edu.vn
-          </p>
+        <div class="cg">
+            <h3>Education</h3>
+            Graduated from University of Information Technology (<i>https://en.uit.edu.vn/</i>)<br/>
+            Faculty of Information Systems<br/>
+            2014 - 2018<br/>
+            * Most of what I have for now comes from self-taught, training doesn't seem to have much effect on me.
         </div>
-        <div class="expectation">
-          <h3>Expectation</h3>
-          Working with <i>Go</i><br/>
-          as <i>Backend developer</i><br/>
-          in <i>English environment</i>
+        <div class="cg">
+            <h3>Goods</h3>
+            Languages: JavaScript, Css, Java, Sql, Shell Script<br/>
+            Others: Git, BitBucket, Gitea, Docker, Kubernetes, Quarkus, Keycloak, PostgreSQL, Hibernate, NuxtJs, VueJs, Open API, PlantUML<br/>
+            English: TOEIC 635 (scored 4 years ago)<br/>
+            Certificates: <i>https://www.hackerrank.com/certificates/85cda60a63d9</i> (scroll down for more)
         </div>
-        <div class="skill">
-          <h3>Technical Skills</h3>
-          <div class="skill-circle" id="golang"></div>
-          <div class="skill-circle" id="java"></div>
-          <div class="skill-circle" id="sql"></div>
-        </div>
-        <div class="lang">
-          <h3>Language</h3>
-          English: TOEIC 635
-        </div>
-      </div><!-- sub-cage -->
-
     </div><!-- a4 -->
     <script src="js/main.js"></script>
   </body>

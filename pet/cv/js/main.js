@@ -67,22 +67,7 @@ var kickass = function() {
   document.getElementById("golang").innerHTML = draw(80, {x:95, y:95}, 38, 'Go');
   document.getElementById("java").innerHTML = draw(80, {x:95, y:95}, 75, 'Java');
   document.getElementById("sql").innerHTML = draw(80, {x:95, y:95}, 60, 'SQL');
-  /*
-  var b = document.createElement("BUTTON");
-  b.innerHTML = "Print!";
-  b.className = "print-trigger";
-  b.addEventListener("click", function(){
-    function cu(deg) {
-      if (deg > 300) return;
-      var out = draw(80, {x:90, y:90}, deg);
-      document.getElementById("test-area").innerHTML = out;
-      //setTimeout(function(){cu(deg+2)}, 20);
-    };
-    cu(0.66*300);
-  });
-  document.body.appendChild(b);
-  */
 };
 
-window.onload = kickass;
+//window.onload = kickass;
 

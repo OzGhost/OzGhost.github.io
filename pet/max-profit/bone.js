@@ -1,12 +1,9 @@
 
-for (var i = 0; i < 4; i++) {
-    //console.log(Math.random() * 10);
-}
-
 window.onload = function(){
     var arr = gen(5);
     var rig = rigIt(arr);
     console.log(rig);
+    var ana = analize(rig);
     function rigIt(arr) {
         var out = [];
         for (var i = 0; i < arr.length - 1; i++) {
@@ -45,5 +42,17 @@ window.onload = function(){
         }
         return out;
     }
-}
+    function analize(rig) {
+        for (var i = 0; i < rig.length; i++) {
+            var arr = rig[i];
+            var size = 0;
+            var price = 0;
+            for (var j = 0; j < arr.length; j++) {
+                size += arr[j].amount;
+                price += arr[j].price;
+            }
+            console.log(size, price);
+        }
+    }
+};
 

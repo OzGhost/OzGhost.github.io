@@ -1,0 +1,16 @@
+#!/bin/bash
+
+net="mun-net"
+
+docker network create $net
+
+docker container create --name mun-redis \
+    --net $net \
+    --net-alias redis-alias \
+    redis:7.0.5-alpine3.16
+
+docker container create --name mun-nserver \
+    --net $net \
+    -p 8080:8080 \
+    dkr:0.0.1
+

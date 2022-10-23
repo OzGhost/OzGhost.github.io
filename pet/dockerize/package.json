@@ -1,0 +1,12 @@
+{
+  "name": "dockerize",
+  "version": "0.0.1",
+  "description": "try docker",
+  "main": "nserver.js",
+  "author": "Oz",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "redis": "^4.3.1"
+  }
+}

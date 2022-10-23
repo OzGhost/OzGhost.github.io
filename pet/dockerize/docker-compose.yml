@@ -1,0 +1,8 @@
+version: "3.7"
+services:
+  nserver:
+    image: dkr:0.0.1
+    ports:
+      - 8080:8080
+  redis-sv:
+    image: redis:7.0.5-alpine3.16

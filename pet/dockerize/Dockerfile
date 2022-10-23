@@ -3,7 +3,7 @@ RUN mkdir /wb
 RUN chown -R node:node /wb
 USER node
 WORKDIR /wb
-COPY . .
+COPY --chown=node:node . .
 RUN npm install 
 
 EXPOSE 8080

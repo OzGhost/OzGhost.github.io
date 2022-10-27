@@ -78,10 +78,11 @@ window.onload = (function(){
     }
 
     (function(){
+        var pre = document.getElementById("screen");
+        /*
         var frome = document.getElementById("frome");
         var toe = document.getElementById("toe");
         var box = document.getElementById("box");
-        var pre = document.getElementById("screen");
         box.addEventListener("submit", function(e){
             e.preventDefault();
             var from = frome.value;
@@ -93,5 +94,120 @@ window.onload = (function(){
             var o = grow(from, to, ">" + from + ">", 0);
             pre.innerText = o.fp.replace(/>/g, " > ");
         });
+        */
+        var iw = document.getElementById("iwindow");
+        var nextbtn = document.getElementById("addHollow");
+        var idx = 1;
+        nextbtn.addEventListener("click", function() {
+            var ho = document.createElement("span");
+            ho.innerHTML = "<i>"+idx+"</i>";
+            ho.className = "hollow";
+            ho.style.top = "0px";
+            ho.style.left = "0px";
+            ho.title = ""+idx;
+            ho.addEventListener("mousedown", trap);
+            iw.appendChild(ho);
+            idx++;
+        });
+        var eue = null;
+        var px = 0;
+        var py = 0;
+        var ex = 0;
+        var ey = 0;
+        var engaged = false
+        function trap(e) {
+            console.log("trap");
+            if (engaged) {
+                console.log("release");
+                engaged = false;
+                document.body.removeEventListener("mousemove", relocate);
+            } else {
+                eue = e.target;
+                px = e.x;
+                py = e.y;
+                ey = parseInt(e.target.style.top);
+                ex = parseInt(e.target.style.left);
+                document.body.addEventListener("mousemove", relocate);
+                engaged = true;
+                console.log("hold", ex, ey);
+            }
+            e.stopPropagation();
+        }
+        function relocate(e) {
+            var dx = e.x - px;
+            var dy = e.y - py;
+            ex += dx;
+            ey += dy;
+            eue.style.top = ey+"px";
+            eue.style.left = ex+"px";
+            px = e.x;
+            py = e.y;
+        }
+        var nodes = document.getElementsByClassName("hollow");
+        for (i = 0; i < nodes.length; i++)
+            nodes[i].addEventListener("click", togglePick);
+        var frome = null;
+        var toe = null;
+        var gin = document.getElementById("gin");
+        function togglePick(e) {
+            if (e.target == frome) {
+                frome.className = "hollow";
+                frome = null;
+                gin.innerHTML = "";
+                return;
+            }
+            if (e.target == toe) {
+                toe.className = "hollow";
+                toe = null;
+                gin.innerHTML = "";
+                return;
+            }
+            if (!frome) {
+                frome = e.target;
+                frome.className = "hollow picked"
+                if (toe) roam();
+                return;
+            }
+            if (!toe) {
+                toe = e.target;
+                toe.className = "hollow picked"
+                if (frome) roam();
+                return;
+            }
+            if (frome && toe) {
+                frome.className = "hollow"
+                frome = e.target;
+                frome.className = "hollow picked"
+                toe.className = "hollow"
+                toe = null;
+                gin.innerHTML = "";
+            }
+        }
+        function roam() {
+            var from = +frome.title;
+            var to = +toe.title;
+            var o = grow(from, to, ">" + from + ">", 0);
+            pre.innerText = o.fp.replace(/>/g, " > ");
+            var ils = o.fp.split(">");
+            gin.innerHTML = "";
+            for (var i = 1; i < ils.length - 2; i++) {
+                var t = document.createElement("img");
+                t.className = "arrow";
+                t.src = "d/" + ils[i] + "t"+ ils[i+1] +".png";
+                gin.appendChild(t);
+            }
+        }
+        var iic = 1;
+        function expand(idx) {
+            gin.innerHTML = "";
+            var ds = rli[idx];
+            for (j = 0; j < ds.length; j++) {
+                var t = document.createElement("img");
+                t.className = "arrow";
+                t.src = "d/" + idx + "t"+ ds[j] +".png";
+                gin.appendChild(t);
+            }
+        }
+        document.getElementById("ntube").addEventListener("click", function(){ expand(iic++) });
     })();
 })();

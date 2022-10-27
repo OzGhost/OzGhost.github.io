@@ -4,16 +4,57 @@
         <title>Lost in Devil's Triangle</title>
         <meta charset="utf-8" />
         <style>
-pre {
-    border: 1px solid lightgrey;
-    border-radius: 2px;
-    padding: 8px 6px;
-    line-height: 1;
+#iwindow {
+    display: inline-block;
+    position: relative;
+}
+
+.hollow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+    border: 3px dashed rgba(150, 150, 150, 0.5);
+    border-radius: 50%;
+    color: white;
+    text-align: center;
+    line-height: 48px;
+}
+
+.hollow > i {
+    display: none;
+}
+
+.hollow:hover {
+    border-color: rgba(255, 255, 255, 0.8);
+    background: rgba(100, 100, 100, 0.5);
+}
+
+.hollow.picked {
+    background: crimson;
+    opacity: 0.5;
+    border-color: white;;
+}
+.arrow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.7;
+    -webkit-filter:invert(100%);
+    filter:invert(100%);
+}
+#ntube {
+    position: fixed;
+    top: 10px;
+    right: 30px;
 }
         </style>
     </head>
     <body>
-        <form id="box">
+        <form id="box" style="display:none">
             <label>From:</label>
             <input type="number" id="frome" />
             <label>To:</label>
@@ -21,9 +62,46 @@ pre {
             <button type="submit">Roam!</button>
         </form>
         <br/>
-        <label>Your path is right below: </label>
+        <label style="display:none">Your path is right below: </label>
         <pre id="screen"></pre>
-        <img src="devil_triangle.jpg"/>
+        <button id="addHollow" style="display:none">Next</button>
+        <div id="iwindow">
+            <img width="1300px" src="dt.png"/>
+            <span class="hollow" title="1" style="top: 73px; left: 615px;"><i>1</i></span>
+            <span class="hollow" title="2" style="top: 121px; left: 736px;"><i>2</i></span>
+            <span class="hollow" title="3" style="top: 172px; left: 808px;"><i>3</i></span>
+            <span class="hollow" title="4" style="top: 212px; left: 920px;"><i>4</i></span>
+            <span class="hollow" title="5" style="top: 250px; left: 1020px;"><i>5</i></span>
+            <span class="hollow" title="6" style="top: 322px; left: 1077px;"><i>6</i></span>
+            <span class="hollow" title="7" style="top: 324px; left: 957px;"><i>7</i></span>
+            <span class="hollow" title="8" style="top: 282px; left: 837px;"><i>8</i></span>
+            <span class="hollow" title="9" style="top: 242px; left: 763px;"><i>9</i></span>
+            <span class="hollow" title="10" style="top: 198px; left: 661px;"><i>10</i></span>
+            <span class="hollow" title="11" style="top: 155px; left: 522px;"><i>11</i></span>
+            <span class="hollow" title="12" style="top: 195px; left: 411px;"><i>12</i></span>
+            <span class="hollow" title="13" style="top: 234px; left: 533px;"><i>13</i></span>
+            <span class="hollow" title="14" style="top: 293px; left: 695px;"><i>14</i></span>
+            <span class="hollow" title="15" style="top: 355px; left: 777px;"><i>15</i></span>
+            <span class="hollow" title="16" style="top: 401px; left: 940px;"><i>16</i></span>
+            <span class="hollow" title="17" style="top: 446px; left: 823px;"><i>17</i></span>
+            <span class="hollow" title="18" style="top: 404px; left: 684px;"><i>18</i></span>
+            <span class="hollow" title="19" style="top: 342px; left: 579px;"><i>19</i></span>
+            <span class="hollow" title="20" style="top: 318px; left: 470px;"><i>20</i></span>
+            <span class="hollow" title="21" style="top: 281px; left: 363px;"><i>21</i></span>
+            <span class="hollow" title="22" style="top: 245px; left: 239px;"><i>22</i></span>
+            <span class="hollow" title="23" style="top: 336px; left: 220px;"><i>23</i></span>
+            <span class="hollow" title="24" style="top: 369px; left: 352px;"><i>24</i></span>
+            <span class="hollow" title="25" style="top: 401px; left: 463px;"><i>25</i></span>
+            <span class="hollow" title="26" style="top: 441px; left: 563px;"><i>26</i></span>
+            <span class="hollow" title="27" style="top: 476px; left: 716px;"><i>27</i></span>
+            <span class="hollow" title="28" style="top: 537px; left: 714px;"><i>28</i></span>
+            <span class="hollow" title="29" style="top: 526px; left: 600px;"><i>29</i></span>
+            <span class="hollow" title="30" style="top: 486px; left: 465px;"><i>30</i></span>
+            <span class="hollow" title="31" style="top: 452px; left: 341px;"><i>31</i></span>
+            <div id="gin"></div>
+        </div>
+        <button id="ntube" style="display:none">ntube</button>
+        <img style="display:none" src="devil_triangle.jpg"/>
         <script src="core.js"></script>
     </body>
 </html>

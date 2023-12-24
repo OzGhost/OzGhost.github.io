@@ -44,57 +44,39 @@ window.onload = (function(){
             rli[t[j]].push(i);
     }
 
-    function grow(from, to, fp, d) {
+    window.mahmax = 0;
+    function grow(from, to, fp, d, v) {
+        if (d > 3000) {
+            v && console.log("overload!");
+            return [];
+        }
+        if (d > window.mahmax) window.mahmax = d;
+        v && console.log("at ["+fp+"] from ["+from+"] find ["+to+"] d ["+d+"]");
         var si = 0;
-        if (to == from)
-            return { fp: fp, d: d};
+        if (to == from) {
+            v && console.log("target found!");
+            return [{ fp: fp, d: d}];
+        }
         var nexts = rli[from];
         var candis = [];
-        var c = undefined;
+        var c = null;
         for (si = 0; si < nexts.length; si++) {
             var next = nexts[si];
-            if (fp.includes(">" + next + ">"))
+            if (fp.includes(">" + next + ">")) {
+                v && console.log("skip ["+next+"]");
                 continue;
-            var newfp = fp + next + ">";
-            c = grow(next, to, newfp, d+1);
-            candis.push(c);
-        }
-        if ( ! candis.length)
-            return {};
-        var min = undefined;
-        for (si = 0; si < candis.length; si++) {
-            c = candis[si];
-            if (c.d) {
-                if (min) {
-                    if (c.d < min.d) {
-                        min = c;
-                    }
-                } else {
-                    min = c;
-                }
             }
+            v && console.log("try ["+next+"]");
+            var newfp = fp + next + ">";
+            c = grow(next, to, newfp, d+1, v);
+            for (var i = 0; i < c.length; i++)
+                candis.push(c[i]);
         }
-        return min || {};
+        return candis;
     }
 
     (function(){
         var pre = document.getElementById("screen");
-        /*
-        var frome = document.getElementById("frome");
-        var toe = document.getElementById("toe");
-        var box = document.getElementById("box");
-        box.addEventListener("submit", function(e){
-            e.preventDefault();
-            var from = frome.value;
-            var to = toe.value;
-            if (from < 1 || from > 31 || to < 1 || to > 31) {
-                pre.innerText = "noYou";
-                return;
-            }
-            var o = grow(from, to, ">" + from + ">", 0);
-            pre.innerText = o.fp.replace(/>/g, " > ");
-        });
-        */
         var iw = document.getElementById("iwindow");
         var nextbtn = document.getElementById("addHollow");
         var idx = 1;
@@ -149,6 +131,8 @@ window.onload = (function(){
         var frome = null;
         var toe = null;
         var gin = document.getElementById("gin");
+        var corner = document.getElementById("cor");
+        var opts = null;
         function togglePick(e) {
             if (e.target == frome) {
                 frome.className = "hollow";
@@ -165,13 +149,13 @@ window.onload = (function(){
             if (!frome) {
                 frome = e.target;
                 frome.className = "hollow picked"
-                if (toe) roam();
+                if (toe) gen();
                 return;
             }
             if (!toe) {
                 toe = e.target;
                 toe.className = "hollow picked"
-                if (frome) roam();
+                if (frome) gen();
                 return;
             }
             if (frome && toe) {
@@ -183,10 +167,27 @@ window.onload = (function(){
                 gin.innerHTML = "";
             }
         }
-        function roam() {
+        function gen() {
             var from = +frome.title;
             var to = +toe.title;
-            var o = grow(from, to, ">" + from + ">", 0);
+            var vb = 0;
+            opts = grow(from, to, ">" + from + ">", 0, vb);
+            opts.sort(function(a, b){ return a.d - b.d; });
+            roam(opts[0]);
+            var picker = document.createElement("select");
+            for (var i = 0; i < opts.length; i++) {
+                var opt = document.createElement("option");
+                opt.value = i;
+                opt.innerHTML = i + " - " + opts[i].d + " step(s)";
+                picker.appendChild(opt);
+            }
+            picker.addEventListener("input", function(e){
+                roam(opts[e.target.value]);
+            });
+            corner.innerHTML = "";
+            corner.appendChild(picker);
+        }
+        function roam(o) {
             pre.innerText = o.fp.replace(/>/g, " > ");
             var ils = o.fp.split(">");
             gin.innerHTML = "";
@@ -208,6 +209,5 @@ window.onload = (function(){
                 gin.appendChild(t);
             }
         }
-        document.getElementById("ntube").addEventListener("click", function(){ expand(iic++) });
     })();
 })();

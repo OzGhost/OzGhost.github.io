@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+    <head>
+        <style>
+body {
+    background: #222;
+    color: #ddd;
+}
+a {
+    color: #eee;
+}
+ul.up {
+    font-size: 28px;
+    margin: 32px;
+    box-shadow: 0 0 6px 6px #333;
+    border-radius: 8px;
+    padding: 12px 12px 12px 42px;
+}
+        </style>
+    </head>
+    <body>
+
+<h2>Mon</h2>
+    <p><a href="https://darebee.com/workouts/strength-and-balance-workout.html">[details]</a></p>
+    <ul>
+        <li><big>20</big> single leg squats</li>
+        <li><big>20</big> single leg deadlifts</li>
+        <li><big>20-count</big> alt arm/leg plank hold</li>
+        <li><big>20</big> alt arm/leg raises</li>
+        <li><big>20-count</big> side star plank hold</li>
+        <li>3 / 4 / 5 sets, rest up to 2 minutes between sets</li>
+    </ul>
+<h2>Tue</h2>
+    <p><a href="https://darebee.com/workouts/paramedic-workout.html">[details]</a></p>
+    <ul>
+        <li><big>20</big> jumping lunges</li>
+        <li><big>20</big> side-to-side lunges</li>
+        <li><big>20</big> shoulder taps</li>
+        <li><big>20</big> climber taps</li>
+        <li><big>max</big> decline push-ups</li>
+        <li><big>20</big> single leg bridges</li>
+        <li><big>20</big> side bridges</li>
+        <li>3 / 5 / 7 sets, rest up to 2 minutes between sets</li>
+    </ul>
+<h2>Wed</h2>
+    <p><a href="https://darebee.com/workouts/iron-core-workout.html">[details]</a></p>
+    <ul>
+        <li><big>10</big> side bridges right side</li>
+        <li><big>10</big> side plank rotations</li>
+        <li><big>10</big> side bridges left side</li>
+        <li><big>10</big> plank crunches right side</li>
+        <li><big>10</big> plank rolls</li>
+        <li><big>10</big> plank crunches left side</li>
+        <li><big>10-count</big> elbow plank hold</li>
+        <li>3 / 4 / 5 sets, rest up to 2 minutes between sets</li>
+    </ul>
+<h2>Thu</h2>
+    <p><a href="https://darebee.com/workouts/chest-arms-and-core-workout.html">[details]</a></p>
+    <ul>
+        <li><big>4</big> push-ups</li>
+        <li><big>4</big> up & down planks</li>
+        <li><big>4</big> push-ups</li>
+        <li><big>20</big> shoulder taps</li>
+        <li><big>4</big> push-ups</li>
+        <li><big>20</big> side plank rotations</li>
+        <li>3 / 5 / 7 sets, rest up to 2 minutes between sets</li>
+    </ul>
+<h2>Fri</h2>
+    <p><a href="https://darebee.com/workouts/cardio-beast-workout.html">[details]</a></p>
+    <ul>
+        <li><big>20</big> high knees</li>
+        <li><big>10</big> climbers</li>
+        <li><big>4</big> basic burpees</li>
+        <li><big>20</big> high knees</li>
+        <li><big>10</big> climbers</li>
+        <li><big>4</big> jumping lunges</li>
+        <li><big>20</big> high knees</li>
+        <li><big>10</big> climbers</li>
+        <li><big>4</big> jump knee-tucks</li>
+        <li>3 / 5 / 7 sets, rest up to 2 minutes between sets</li>
+    </ul>
+<h2>Sat</h2>
+    <p><a href="https://darebee.com/workouts/olympian-workout.html">[details]</a></p>
+    <ul>
+        <li><big>10</big> jumping lunges</li>
+        <li><big>10</big> jump squats</li>
+        <li><big>15-count</big> squat hold</li>
+        <li><big>15</big> push-ups</li>
+        <li><big>30</big> shoulder taps</li>
+        <li><big>15-count</big> plank hold</li>
+        <li><big>10</big> climbers</li>
+        <li><big>max</big> pull-ups</li>
+        <li>3 / 5 / 7 sets, rest up to 2 minutes between sets</li>
+    </ul>
+<h2>Sun</h2>
+    <p><a href="https://darebee.com/workouts/boulder-workout.html">[details]</a></p>
+    <ul>
+        <li><big>4</big> push-ups</li>
+        <li><big>10-count</big> plank</li>
+        <li><big>4</big> push-ups</li>
+        <li><big>4</big> up & down planks</li>
+        <li><big>4</big> raised leg push-ups</li>
+        <li><big>10</big> shoulder taps</li>
+        <li><big>10</big> thigh taps</li>
+        <li>3 / 5 / 7 sets, rest up to 2 minutes between sets</li>
+    </ul>
+        <script>
+window.onload = function () {
+    var tags = document.getElementsByTagName("ul");
+    for (var i = 0; i < tags.length; i++) {
+        tags[i].addEventListener("click", function(e){
+            for (var j = 0; j < tags.length; j++)
+                tags[j].className = "";
+            e.target.parentNode.className = "up";
+        });
+    }
+}
+        </script>
+    </body>
+</html>

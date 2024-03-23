@@ -81,7 +81,7 @@ document.getElementById("counter").addEventListener("click", function(){
         }
     }
     for (var i = 0; i < colors.length; i++)
-        countRack[i].innerText = m[ "c-"+colors[i] ];
+        countRack[i].innerText = m[ "c-"+colors[i] ] || 0;
 });
 
 var skin = document.createElement("style");

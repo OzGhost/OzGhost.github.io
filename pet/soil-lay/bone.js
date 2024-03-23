@@ -10,7 +10,7 @@ var t1 = document.createElement("tr");
 var t2 = document.createElement("tr");
 var cs = "";
 var cur = document.getElementById("cur");
-cur.className = "c-"+colors[0];
+cur.className = "c-"+colors[1];
 for (var i = 0; i < colors.length; i++) {
     var d1 = document.createElement("td");
     var d2 = document.createElement("td");
@@ -93,4 +93,4 @@ skin.innerText = cs
     + "i { color: white; }"
 ;
 // init
-cur.className = "c-"+colors[1];
+cur.className = "c-"+colors[0];

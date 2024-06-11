@@ -72,7 +72,7 @@ function expand(e, i, j) {
     }
 }
 
-document.getElementById("counter").addEventListener("click", function(){
+function count(){
     var m = {};
     for (var i = 0; i < w; i++) {
         for (var j = 0; j < w; j++) {
@@ -82,7 +82,10 @@ document.getElementById("counter").addEventListener("click", function(){
     }
     for (var i = 0; i < colors.length; i++)
         countRack[i].innerText = m[ "c-"+colors[i] ] || 0;
-});
+}
+
+document.getElementById("counter").addEventListener("click", count);
+document.body.addEventListener("keydown", function(e){ if (e.key == "Enter") count(); });
 
 var skin = document.createElement("style");
 document.head.appendChild(skin);

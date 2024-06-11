@@ -1,9 +1,9 @@
 var colors = [
     "222831", //ground
-    "78ABA8",
-    "C8CFA0",
-    "FCDC94",
-    "EF9C66"
+    "DAD3BE",
+    "FF7D29",
+    "FF9EAA",
+    "3AA6B9"
 ];
 
 var countRack = [];

@@ -1,8 +1,9 @@
 var colors = [
     "222831", //ground
-    "76abae",
-    "eabe6c",
-    "ff204e"
+    "78ABA8",
+    "C8CFA0",
+    "FCDC94",
+    "EF9C66"
 ];
 
 var countRack = [];
@@ -11,6 +12,7 @@ var t2 = document.createElement("tr");
 var cs = "";
 var cur = document.getElementById("cur");
 cur.className = "c-"+colors[1];
+var pco = 0;
 for (var i = 0; i < colors.length; i++) {
     var d1 = document.createElement("td");
     var d2 = document.createElement("td");
@@ -21,6 +23,7 @@ for (var i = 0; i < colors.length; i++) {
     countRack.push(d2);
     cs += ".c-"+c+" { background: #"+c+"; }"
     d1.addEventListener("click", function(e){
+        pco = cur.className;
         cur.className = e.target.className;
     });
 }
@@ -85,7 +88,16 @@ function count(){
 }
 
 document.getElementById("counter").addEventListener("click", count);
-document.body.addEventListener("keydown", function(e){ if (e.key == "Enter") count(); });
+document.body.addEventListener("keydown", function(e){
+    if (e.key == "Enter")
+        count();
+    if (e.key == "Control") {
+        var t = pco;
+        pco = cur.className;
+        if (t)
+            cur.className = t;
+    }
+});
 
 var skin = document.createElement("style");
 document.head.appendChild(skin);

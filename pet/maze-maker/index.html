@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+	<header>
+		<title>Maze Maker</title>
+	</header>
+	<style>
+html {
+	background: #030303;
+}
+table {
+	border-collapse: collapse;
+}
+td {
+	border: 1px solid #333;
+	padding: 6px;
+}
+[mark] {
+	z-index: 100;
+}
+[mark="start"] {
+	box-shadow: 0 0 2px 2px yellow;
+}
+[mark="end"] {
+	box-shadow: 0 0 2px 2px red;
+}
+[mark="head"] {
+	box-shadow: 0 0 2px 2px cyan;
+}
+.dirty {
+	background: #555;
+}
+	</style>
+	<body>
+		<script src="core.js"></script>
+	</body>
+</html>

@@ -1,0 +1,10 @@
+#!/bin/ash
+javac -Xlint:unchecked Race.java && \
+    echo ":: start running" && java Race
+rm -rf Race*.class
+echo; exit
+
+cp="lib/*:."
+javac -cp $cp -Xlint:unchecked WateringCan.java && \
+    java -cp $cp WateringCan
+rm -f WateringCan*.class

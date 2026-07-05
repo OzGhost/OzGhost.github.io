@@ -1,0 +1,18 @@
+#!/bin/ash
+rm -rf /tmp/p
+rm -f pack.zip
+cp="lib/*:."
+javac -cp $cp -Xlint:unchecked WateringCan.java
+mkdir /tmp/p
+cp -r lib /tmp/p/
+cp README.md /tmp/p/
+mv *.class /tmp/p/
+cd /tmp/p
+cat <<EOF > run.cmd
+@echo off
+java -cp ".\\lib\\*;." WateringCan
+set /p inp=Enter to quit ...
+EOF
+cd /tmp/
+zip -r9v pack.zip p/
+mv pack.zip /ws/

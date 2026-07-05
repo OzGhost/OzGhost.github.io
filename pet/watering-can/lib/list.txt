@@ -1,0 +1,8 @@
+aalto-xml-1.3.3.jar
+commons-codec-1.18.0.jar
+commons-compress-1.27.1.jar
+commons-io-2.19.0.jar
+commons-lang3-3.17.0.jar
+fastexcel-reader-0.18.4.jar
+list.txt
+stax2-api-4.2.2.jar
